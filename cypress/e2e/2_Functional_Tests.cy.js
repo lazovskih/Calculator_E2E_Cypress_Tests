@@ -4,8 +4,9 @@ import TestData from "../fixtures/TestData.json";
 const currentPage = new CalculatorPage();
 
 beforeEach(() => {
-  const url = Cypress.env("baseUrl");
-  cy.visit(url);
+  cy.env(["baseUrl"]).then(({ baseUrl }) => {
+    cy.visit(baseUrl);
+  });
 });
 
 context("2.	Functional Tests", () => {
