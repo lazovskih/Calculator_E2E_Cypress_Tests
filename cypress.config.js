@@ -13,5 +13,6 @@ module.exports = defineConfig({
   },
   video: true,
   videoCompression: 10,
-  scrollBehavior: false
+  scrollBehavior: false,
+  allowCypressEnv: false,
 });
