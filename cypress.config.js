@@ -9,7 +9,7 @@ module.exports = defineConfig({
     setupNodeEvents(on, config) {},
   },
   env: {
-    baseUrl: "https://www.theonlinecalculator.com/",
+    baseUrl: "./index.html",
   },
   video: true,
   videoCompression: 10,
