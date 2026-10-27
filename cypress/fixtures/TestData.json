@@ -1,437 +1,475 @@
 [
   {
-    "operation": "add (sum)",
+    "suboperation": "add (sum)",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["1", "+", "2"],
+        "args": ["1", "+", "2", "="],
         "result": "3"
       },
       {
-        "args": ["10", "+", "20"],
+        "args": ["10", "+", "20", "="],
         "result": "30"
       },
       {
-        "args": ["100", "+", "200"],
+        "args": ["100", "+", "200", "="],
         "result": "300"
       },
       {
-        "args": ["10000000", "+", "20000000"],
+        "args": ["10000000", "+", "20000000", "="],
         "result": "30,000,000"
       },
       {
-        "args": ["1000000000000000", "+", "2000000000000000"],
+        "args": ["1000000000000000", "+", "2000000000000000", "="],
         "result": "3,000,000,000,000,000"
       },
       {
-        "args": ["0.0000002", "+", "2.3"],
+        "args": ["0.0000002", "+", "2.3", "="],
         "result": "2.3000002"
       },
       {
-        "args": ["0.0002", "+", "0.0002"],
+        "args": ["0.0002", "+", "0.0002", "="],
         "result": "0.0004"
       },
       {
-        "args": ["1.2", "+", "2.3"],
+        "args": ["1.2", "+", "2.3", "="],
         "result": "3.5"
       },
       {
-        "args": ["1.23456789", "+", "2.3456789"],
+        "args": ["1.23456789", "+", "2.3456789", "="],
         "result": "3.58024679"
       }
     ]
   },
   {
-    "operation": "add (sum)",
+    "suboperation": "add (sum)",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["1", "+", "-2"],
+        "args": ["1", "+", "-2", "="],
         "result": "-1"
       },
       {
-        "args": ["10", "+", "-20"],
+        "args": ["10", "+", "-20", "="],
         "result": "-10"
       },
       {
-        "args": ["-100", "+", "200"],
+        "args": ["-100", "+", "200", "="],
         "result": "100"
       },
       {
-        "args": ["-1000000000000000", "+", "2000000000000000"],
+        "args": ["-1000000000000000", "+", "2000000000000000", "="],
         "result": "1,000,000,000,000,000"
       },
       {
-        "args": ["-0.0000002", "+", "2.3"],
+        "args": ["-0.0000002", "+", "2.3", "="],
         "result": "2.2999998"
       },
       {
-        "args": ["-0.0002", "+", "-0.0002"],
+        "args": ["-0.0002", "+", "-0.0002", "="],
         "result": "-0.0004"
       },
       {
-        "args": ["-1.2", "+", "-2.3"],
+        "args": ["-1.2", "+", "-2.3", "="],
         "result": "-3.5"
       }
     ]
   },
   {
-    "operation": "cumulative add (sum)",
+    "suboperation": "cumulative add (sum)",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["110", "+", "120", "+", "130", "+", "140", "+", "150"],
+        "args": ["110", "+", "120", "+", "130", "+", "140", "+", "150", "="],
         "result": "650"
       },
       {
-        "args": ["2.1", "+", "2.2", "+", "2.3", "+", "2.4"],
+        "args": ["2.1", "+", "2.2", "+", "2.3", "+", "2.4", "="],
         "result": "9"
       }
     ]
   },
   {
-    "operation": "cumulative add (sum)",
+    "suboperation": "cumulative add (sum)",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["110", "+", "120", "+", "-130", "+", "140", "+", "-150"],
+        "args": ["110", "+", "120", "+", "-130", "+", "140", "+", "-150", "="],
         "result": "90"
       },
       {
-        "args": ["-2.1", "+", "-2.2", "+", "-2.3", "+", "-2.4"],
+        "args": ["-2.1", "+", "-2.2", "+", "-2.3", "+", "-2.4", "="],
         "result": "-9"
       }
     ]
   },
   {
-    "operation": "subtract",
+    "suboperation": "subtract",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["111111", "−", "100000"],
+        "args": ["111111", "−", "100000", "="],
         "result": "11,111"
       },
       {
-        "args": ["10", "−", "11"],
+        "args": ["10", "−", "11", "="],
         "result": "-1"
       },
       {
-        "args": ["3000000000", "−", "2000000000"],
+        "args": ["3000000000", "−", "2000000000", "="],
         "result": "1,000,000,000"
       },
       {
-        "args": ["1.2", "−", "2.3"],
+        "args": ["1.2", "−", "2.3", "="],
         "result": "-1.1"
       },
       {
-        "args": ["0.0002", "−", "0.0002"],
+        "args": ["0.0002", "−", "0.0002", "="],
         "result": "0"
       },
       {
-        "args": ["0.0004", "−", "0.0002"],
+        "args": ["0.0004", "−", "0.0002", "="],
         "result": "0.0002"
       }
     ]
   },
   {
-    "operation": "subtract",
+    "suboperation": "subtract",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["-111111", "−", "100000"],
+        "args": ["-111111", "−", "100000", "="],
         "result": "-211,111"
       },
       {
-        "args": ["10", "−", "-11"],
+        "args": ["10", "−", "-11", "="],
         "result": "21"
       },
       {
-        "args": ["-3000000000", "−", "2000000000"],
+        "args": ["-3000000000", "−", "2000000000", "="],
         "result": "-5,000,000,000"
       },
       {
-        "args": ["-1.2", "−", "-2.3"],
+        "args": ["-1.2", "−", "-2.3", "="],
         "result": "1.1"
       },
       {
-        "args": ["0.0002", "−", "-0.0002"],
+        "args": ["0.0002", "−", "-0.0002", "="],
         "result": "0.0004"
       }
     ]
   },
   {
-    "operation": "cumulative subtract",
+    "suboperation": "cumulative subtract",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["110", "−", "120", "−", "130", "−", "140", "−", "150"],
+        "args": ["110", "−", "120", "−", "130", "−", "140", "−", "150", "="],
         "result": "-430"
       },
       {
-        "args": ["2.1", "−", "2.2", "−", "2.3", "−", "2.4"],
+        "args": ["2.1", "−", "2.2", "−", "2.3", "−", "2.4", "="],
         "result": "-4.8"
       }
     ]
   },
   {
-    "operation": "cumulative subtract",
+    "suboperation": "cumulative subtract",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["110", "−", "120", "−", "-130", "−", "140", "−", "-150"],
+        "args": ["110", "−", "120", "−", "-130", "−", "140", "−", "-150", "="],
         "result": "130"
       },
       {
-        "args": ["-2.1", "−", "2.2", "−", "2.3", "−", "-2.4"],
+        "args": ["-2.1", "−", "2.2", "−", "2.3", "−", "-2.4", "="],
         "result": "-4.2"
       }
     ]
   },
   {
-    "operation": "multiply",
+    "suboperation": "multiply",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["111111", "×", "100000"],
+        "args": ["111111", "×", "100000", "="],
         "result": "11,111,100,000"
       },
       {
-        "args": ["10", "×", "11"],
+        "args": ["10", "×", "11", "="],
         "result": "110"
       },
       {
-        "args": ["1234567890", "×", "1234567890"],
+        "args": ["1234567890", "×", "1234567890", "="],
         "result": "1,524,157,875,019,052,000"
       },
       {
-        "args": ["1.2", "×", "2.3"],
+        "args": ["1.2", "×", "2.3", "="],
         "result": "2.76"
       },
       {
-        "args": ["0.02", "×", "0.02"],
+        "args": ["0.02", "×", "0.02", "="],
         "result": "0.0004"
       },
       {
-        "args": ["10", "×", "0.01"],
+        "args": ["10", "×", "0.01", "="],
         "result": "0.1"
       }
     ]
   },
   {
-    "operation": "multiply",
+    "suboperation": "multiply",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["1", "×", "-1"],
+        "args": ["1", "×", "-1", "="],
         "result": "-1"
       },
       {
-        "args": ["-10", "×", "-10"],
+        "args": ["-10", "×", "-10", "="],
         "result": "100"
       },
       {
-        "args": ["-1.2", "×", "-2.3"],
+        "args": ["-1.2", "×", "-2.3", "="],
         "result": "2.76"
       },
       {
-        "args": ["-0.02", "×", "0.02"],
+        "args": ["-0.02", "×", "0.02", "="],
         "result": "-0.0004"
       },
       {
-        "args": ["10", "×", "-0.01"],
+        "args": ["10", "×", "-0.01", "="],
         "result": "-0.1"
       }
     ]
   },
   {
-    "operation": "cumulative multiply",
+    "suboperation": "cumulative multiply",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["110", "×", "120", "×", "130", "×", "140", "×", "150"],
+        "args": ["110", "×", "120", "×", "130", "×", "140", "×", "150", "="],
         "result": "36,036,000,000"
       },
       {
-        "args": ["2.1", "×", "2.2", "×", "2.3", "×", "2.4"],
+        "args": ["2.1", "×", "2.2", "×", "2.3", "×", "2.4", "="],
         "result": "25.5024"
       }
     ]
   },
   {
-    "operation": "cumulative multiply",
+    "suboperation": "cumulative multiply",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["11", "×", "-22", "×", "33", "×", "44", "×", "55"],
+        "args": ["11", "×", "-22", "×", "33", "×", "44", "×", "55", "="],
         "result": "-19,326,120"
       },
       {
-        "args": ["-2.01", "×", "2.02", "×", "2.03", "×", "-2.04"],
+        "args": ["-2.01", "×", "2.02", "×", "2.03", "×", "-2.04", "="],
         "result": "16.81410024"
       }
     ]
   },
   {
-    "operation": "divide",
+    "suboperation": "divide",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["256", "÷", "32"],
+        "args": ["256", "÷", "32", "="],
         "result": "8"
       },
       {
-        "args": ["1000000", "÷", "333"],
+        "args": ["1000000", "÷", "333", "="],
         "result": "3,003.003003003"
       },
       {
-        "args": ["879", "÷", "2"],
+        "args": ["879", "÷", "2", "="],
         "result": "439.5"
       },
       {
-        "args": ["1.2", "÷", "2.3"],
+        "args": ["1.2", "÷", "2.3", "="],
         "result": "0.5217391304"
       },
       {
-        "args": ["0.02", "÷", "0.02"],
+        "args": ["0.02", "÷", "0.02", "="],
         "result": "1"
       },
       {
-        "args": ["10", "÷", "0.01"],
+        "args": ["10", "÷", "0.01", "="],
         "result": "1,000"
       }
     ]
   },
   {
-    "operation": "divide",
+    "suboperation": "divide",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["32", "÷", "-8"],
+        "args": ["32", "÷", "-8", "="],
         "result": "-4"
       },
       {
-        "args": ["-1000000", "÷", "-333"],
+        "args": ["-1000000", "÷", "-333", "="],
         "result": "3,003.003003003"
       },
       {
-        "args": ["-879", "÷", "2"],
+        "args": ["-879", "÷", "2", "="],
         "result": "-439.5"
       },
       {
-        "args": ["-1.2", "÷", "-2.3"],
+        "args": ["-1.2", "÷", "-2.3", "="],
         "result": "0.5217391304"
       },
       {
-        "args": ["-0.02", "÷", "0.02"],
+        "args": ["-0.02", "÷", "0.02", "="],
         "result": "-1"
       },
       {
-        "args": ["10", "÷", "-0.01"],
+        "args": ["10", "÷", "-0.01", "="],
         "result": "-1,000"
       }
     ]
   },
   {
-    "operation": "cumulative divide",
+    "suboperation": "cumulative divide",
     "dataValues": "with positive integers & decimal",
     "testCases": [
       {
-        "args": ["11", "÷", "22", "÷", "33", "÷", "44", "÷", "55"],
+        "args": ["11", "÷", "22", "÷", "33", "÷", "44", "÷", "55", "="],
         "result": "0.000006261"
       },
       {
-        "args": ["2.01", "÷", "2.02", "÷", "2.03", "÷", "2.04"],
+        "args": ["2.01", "÷", "2.02", "÷", "2.03", "÷", "2.04", "="],
         "result": "0.2402804755"
       }
     ]
   },
   {
-    "operation": "cumulative divide",
+    "suboperation": "cumulative divide",
     "dataValues": "with negative integers & decimal",
     "testCases": [
       {
-        "args": ["11", "÷", "-22", "÷", "33", "÷", "44", "÷", "55"],
+        "args": ["11", "÷", "-22", "÷", "33", "÷", "44", "÷", "55", "="],
         "result": "-0.000006261"
       },
       {
-        "args": ["-2.01", "÷", "2.02", "÷", "2.03", "÷", "-2.04"],
+        "args": ["-2.01", "÷", "2.02", "÷", "2.03", "÷", "-2.04", "="],
         "result": "0.2402804755"
       }
     ]
   },
-  {
-    "operation": "invalid divide ",
+   {
+    "suboperation": "invalid divide ",
     "dataValues": "with 'zero' as devizor",
     "testCases": [
       {
-        "args": ["256", "÷", "0"],
-        "result": "Not a Number"
+        "args": ["256", "÷", "0", "="],
+        "result": "Div by 0"
       }
     ]
   },
   {
-    "operation": "cumulative operations with invalid divide",
+    "suboperation": "cumulative operations with invalid divide",
     "dataValues": "with 'zero' as devizor",
     "testCases": [
       {
-        "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0"],
-        "result": "Not a Number"
+        "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0", "="],
+        "result": "Div by 0"
       }
     ]
   },
   {
-    "operation": "Multiple cumulative operations",
+    "suboperation": "Multiple cumulative operations",
     "dataValues": "with positive & negative integers & decimal",
     "testCases": [
       {
-        "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11"],
+        "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11", "="],
         "result": "-99"
       },
       {
-        "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1"],
+        "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1", "="],
         "result": "459"
       },
       {
-        "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1"],
+        "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1", "="],
         "result": "-551"
       }
     ]
   },
   {
-    "operation": "Multiple cumulative with equal operation",
+    "suboperation": "Multiple cumulative with equal suboperation",
     "dataValues": "with positive & negative integers & decimal",
     "testCases": [
       {
-        "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11", "=", "+", "99"],
+        "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11", "=", "+", "99", "="],
         "result": "0"
       },
       {
-        "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1", "=", "−", "459"],
+        "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1", "=", "−", "459", "="],
         "result": "0"
       },
       {
-        "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1", "=", "+", "551"],
+        "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1", "=", "+", "551", "="],
         "result": "0"
       }
     ]
   },
   {
-    "operation": "Multiple operation result to last operand",
+    "suboperation": "Multiple suboperation result to last operand",
     "dataValues": "with positive integers",
     "testCases": [
       {
-        "args": ["11", "+", "−", "×", "÷", "33"],
+        "args": ["11", "+", "−", "×", "÷", "33", "="],
         "result": "0.3333333333"
       }
     ]
   },
   {
-    "operation": "Multiple operations",
+    "suboperation": "Multiple operations",
     "dataValues": "with not complete arguments",
     "testCases": [
       {
-        "args": ["+", "−", "×", "11", "÷", "+", "−"],
+        "args": ["+", "−", "×", "11", "÷", "+", "−", "="],
         "result": "11"
+      }
+    ]
+  },
+   {
+    "suboperation": "Square root",
+    "dataValues": "of a positive integer",
+    "testCases": [
+      {
+        "args": ["1024","√x"],
+        "result": "32"
+      },
+      {
+        "args": ["1,524,157,875,019,052,000","√x"],
+        "result": "1,234,567,890"
+      }
+    ]
+  },
+   {
+    "suboperation": "Square root",
+    "dataValues": "of a positive decimal",
+    "testCases": [
+      {
+        "args": ["5.0625","√x"],
+        "result": "2.25"
+      },
+      {
+        "args": ["4.00000004","√x"],
+        "result": "2.00000001"
+      }
+    ]
+  },
+   {
+    "suboperation": "Square root",
+    "dataValues": "of a negative decimal",
+    "testCases": [
+      {
+        "args": ["-5.0625","√x"],
+        "result": "Invalid input"
       }
     ]
   }

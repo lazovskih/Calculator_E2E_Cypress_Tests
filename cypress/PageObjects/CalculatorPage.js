@@ -9,37 +9,64 @@ export class CalculatorPage {
       };
     }
   }
+  
+  buttons = [ "zeroButton", "0", "oneButton", "1", "twoButton", "2", "threeButton", "3", "fourButton", "4", "fiveButton", "5",
+    "sixButton", "6", "sevenButton", "7", "eightButton", "8", "nineButton", "9", "decimalButton", ".", "addButton", "+", "subtractButton", "−",
+    "multiplyButton", "×", "divideButton", "÷", "calculateButton", "=", "clearButton", "AC", "negateButton", "+/-",
+    "squarerootButton", "√x", "percentButton", "%", "piButton", "π", "squareButton", "x²", "round2Button","R2", "round0Button", "R0",
+    "memoryClearButton","MC", "memoryRecallButton", "MR", "memoryPlusButton", "M+", "memoryMinusButton", "M-", "clearButton", "CE"
+  ];
+
+  display = {
+    locator: "input[name='display']",
+    value: " ",
+  };
   /**
    * Returns the locator for a button based on its name or value.
-   * @param {string} arg - The name or value of the button to get the locator for.
+   * @param {string} buttonValue - The name or value of the button to get the locator for.
    * @returns {string} - The locator string for the button.
    */
-  getButton(arg) {
-    if (isNaN(Number(arg))) {
+  getButton(buttonValue) {
+    if (isNaN(Number(buttonValue))) {
       // Handle negative button
-      arg = arg == "!" ? "+/-" : arg;
+      buttonValue = buttonValue == "!" ? "+/-" : buttonValue;
     }
-    return Object.values(this).find((prop) => prop.value === arg)?.locator;
+    return Object.values(this).find((prop) => prop.value === buttonValue)?.locator;
   }
   /**
    * Clicks the buttons on the calculator based on the provided string.
    * @param {string} buttons - string with button values
-   * @returns undefined
    */
   clickButtons(buttons) {
-    const buttonsArr = buttons.split("");
-    for (let i = 0; i < buttonsArr.length; i++) {
-      const buttonLocator = this.getButton(buttonsArr[i]);
-      // Click the button
-      cy.get(buttonLocator).first().click();
-    }
-  }
-  buttons = [ "zero", "0", "one", "1", "two", "2", "three", "3", "four", "4", "five", "5",
-    "six", "6", "seven", "7", "eight", "8", "nine", "9", "decimal", ".", "add", "+", "subtract", "−",
-    "multiply", "×", "divide", "÷", "calculate", "=", "clearButton", "AC", "negateButton", "+/-" ];
+    const locators = [];
+    // let addNegateButton = false;
+    buttons = buttons.trim().replace(" ", "");
 
-  results = {
-    locator: "input[name='display']",
-    value: " ",
-  };
+    const isNumber = Number(buttons.replaceAll(",","").replace("!",""));
+    const isSpecial = isNaN(isNumber); // && buttons.length === 2;
+
+if(buttons.includes("-") && !isNaN(isNumber)){
+      buttons = buttons.replace("-", "") + "!";
+    }
+
+    if (isSpecial) {
+      // Handle non-number buttons
+      const locator = this.getButton(buttons);
+      locators.push(locator);
+      console.log('------ Special: ' + buttons + ' | locator: ' + locator); // TODO: remove
+    } 
+
+    if(!isNaN(isNumber)) {
+      const buttonsArr = buttons.replaceAll(",", "").split("");
+      for (const button of buttonsArr) {
+        const locator = this.getButton(button);
+        locators.push(locator);
+        console.log('------ Number ' + button + ' | locator: ' + locator); // TODO: remove
+      }
+    }
+
+    cy.wrap(locators).each((locator) => {
+      cy.get(locator).first().click();
+    });
+  }
 }

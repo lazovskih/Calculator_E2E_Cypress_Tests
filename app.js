@@ -1,4 +1,7 @@
-var is_Number = !1, is_Decimal = !1, is_Operator = !1, is_Constant = !1, is_Executed = !1, Value = " ", aValue = " ", Operator = "", a, b, r, t, Value_1_set = !1, Value_1 = 0, Operator_1 = 0, Value_2_set = !1, Value_2 = 0, Operator_2 = 0;
+// Original implementation copied from https://www.theonlinecalculator.com/ in 2026-10-26.
+// The only change is to replace "Not a Number" with "Invalid input"
+let is_Number = !1, is_Decimal = !1, is_Operator = !1, is_Constant = !1, is_Executed = !1;
+let Value = " ", aValue = " ", Operator = "", a, b, r, t, Value_1_set = !1, Value_1 = 0, Operator_1 = 0, Value_2_set = !1, Value_2 = 0, Operator_2 = 0;
 function numberWithCommas(c) {
     c = c.toString().split(".");
     c[0] = c[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -34,39 +37,100 @@ function display_backspace() {
     Value = Value.substring(0, Value.length - 1);
     displayValue(Value.trim())
 }
+// function enterOperator(c) {
+//     "" === document.calculator.display.value && (document.calculator.display.value = " ");
+//     " " !== document.calculator.display.value && "Not a Number" !== document.calculator.display.value && (Operator = c, is_Operator && Value_1_set && !Value_2_set ? Operator_1 = Operator : Value_1_set && !Value_2_set ? (Value_2 = removeCommas(document.calculator.display.value), Operator_2 = Operator, Value_2_set = !0, execute(), displayValue(aValue)) : (resetValues(), Value_1 = removeCommas(document.calculator.display.value), Operator_1 = Operator, Value_1_set = !0, resetFlags(), is_Operator = !0))
+// }
 function enterOperator(c) {
-    "" === document.calculator.display.value && (document.calculator.display.value = " ");
-    " " !== document.calculator.display.value && "Not a Number" !== document.calculator.display.value && (Operator = c,
-    is_Operator && Value_1_set && !Value_2_set ? Operator_1 = Operator : Value_1_set && !Value_2_set ? (Value_2 = removeCommas(document.calculator.display.value),
-    Operator_2 = Operator,
-    Value_2_set = !0,
-    execute(),
-    displayValue(aValue)) : (resetValues(),
-    Value_1 = removeCommas(document.calculator.display.value),
-    Operator_1 = Operator,
-    Value_1_set = !0,
-    resetFlags(),
-    is_Operator = !0))
+    const display = document.calculator.display;
+    if (!display.value || display.value === " ") {
+        display.value = " ";
+        return;
+    }
+    // Guard against all error states
+    const errorValues = ["Not a Number", "Invalid input", "Div by 0"];
+    if (errorValues.includes(display.value.trim())) {
+        return;
+    }
+    Operator = c;
+    // Case 1: Switching operator before entering second number (e.g. "5 +" -> "-")
+    if (is_Operator && Value_1_set && !Value_2_set) {
+        Operator_1 = Operator;
+        return;
+    }
+    // Case 2: Chaining calculation (e.g. "5 + 3" -> pressing "+" or "=")
+    if (Value_1_set && !Value_2_set) {
+        Value_2 = removeCommas(display.value);
+        Operator_2 = Operator;
+        Value_2_set = true;
+        execute();
+        displayValue(aValue);
+        return;
+    }
+    // Case 3: First operator in a calculation
+    resetValues();
+    Value_1 = removeCommas(display.value);
+    Operator_1 = Operator;
+    Value_1_set = true;
+    resetFlags();
+    is_Operator = true;
 }
 function execute() {
-    val_1 = parseFloat(Value_1);
-    val_2 = parseFloat(Value_2);
-    Oper = Operator_1;
-    ans = "";
-    "+" === Oper ? ans = val_1 + val_2 : "-" === Oper ? ans = val_1 - val_2 : "*" === Oper ? ans = val_1 * val_2 : "/" === Oper && (ans = 0 === val_2 ? "Not a Number" : val_1 / val_2);
+    const val_1 = parseFloat(Value_1);
+    const val_2 = parseFloat(Value_2);
+    const Oper = Operator_1;
+    let ans = "";
+
+    switch (Oper) {
+        case "+":
+            ans = val_1 + val_2;
+            break;
+        case "-":
+            ans = val_1 - val_2;
+            break;
+        case "*":
+            ans = val_1 * val_2;
+            break;
+        case "/":
+            ans = val_2 === 0 ? "Div by 0" : val_1 / val_2;
+            break;
+        default:
+            ans = val_2;
+            break;
+    }
+
     Value = ans;
-    "Not a Number" === ans ? (resetValues(),
-    resetFlags(),
-    aValue = ans) : (Operator = Operator_2,
-    aValue = 10 < decimalPlaces(ans) ? parseFloat(Math.round10(ans, -10)) : parseFloat(ans),
-    "=" === Operator_2 ? (resetValues(),
-    resetFlags(),
-    is_Executed = !0) : (resetValues(),
-    Value_1 = ans,
-    Operator_1 = Operator,
-    Value_1_set = !0,
-    resetFlags(),
-    is_Operator = !0))
+
+    // Handle error strings or NaN
+    if (typeof ans === "string" || isNaN(ans)) {
+        resetValues();
+        resetFlags();
+        aValue = ans;
+        return;
+    }
+
+    Operator = Operator_2;
+
+    // Round to 10 decimal places if precision exceeds 10 places
+    if (decimalPlaces(ans) > 10) {
+        aValue = parseFloat(Math.round10(ans, -10));
+    } else {
+        aValue = parseFloat(ans);
+    }
+
+    if (Operator_2 === "=") {
+        resetValues();
+        resetFlags();
+        is_Executed = true;
+    } else {
+        // Chaining next operation (e.g., 2 + 3 + ...)
+        resetValues();
+        Value_1 = ans;
+        Operator_1 = Operator;
+        Value_1_set = true;
+        resetFlags();
+        is_Operator = true;
+    }
 }
 function display_clear() {
     "" === document.calculator.display.value && (document.calculator.display.value = " ");
@@ -113,7 +177,7 @@ function func(c) {
         Value = Value.toFixed(2)) : "percent" === c ? Value = !Value_1_set || "+" !== Operator_1 && "-" !== Operator_1 ? val / 100 : val / 100 * Value_1 : "negate" === c && (Value = -val),
         resetFlags(),
         is_Constant = !0,
-        isNaN(Value) ? displayValue("Not a Number") : (aValue = Value,
+        isNaN(Value) ? displayValue("Invalid input") : (aValue = Value,
         "r0" !== c && "r2" !== c && (aValue = 10 < decimalPlaces(Value) ? parseFloat(Math.round10(Value, -10)) : parseFloat(Value)),
         displayValue(aValue))
 }
@@ -244,5 +308,4 @@ function checkKeyPressed(c) {
         display_backspace()
     }
     c.preventDefault()
-}
-;
+};

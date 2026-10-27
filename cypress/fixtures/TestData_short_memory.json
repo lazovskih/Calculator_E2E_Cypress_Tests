@@ -1,0 +1,72 @@
+[
+   {
+    "suboperation": "memory functions",
+    "dataValues": "add to memory positive",
+    "testCases": [
+      {
+        "args": ["2", "+","00.1", "%","=", "M+","2", "+","00.1", "%","=", "M+","MR"],
+        "result": "4.004"
+      },
+      {
+        "args": ["101.0001", "M+","CE","101.0001", "M+","MR"],
+        "result": "202.0002"
+      }
+    ]
+  },
+  {
+    "suboperation": "memory functions",
+    "dataValues": "add to memory negative",
+    "testCases": [
+      {
+        "args": ["-2", "+","00.1", "%","=", "M+","CE","-2", "+","00.1", "%","=", "M+","MR"],
+        "result": "-4.004"
+      },
+      {
+        "args": ["-101.0001", "M+","CE","-101.0001", "M+","MR"],
+        "result": "-202.0002"
+      }
+    ]
+  },
+  {
+    "suboperation": "memory functions",
+    "dataValues": "subtract from memory positive",
+    "testCases": [
+      {
+        "args": ["2", "+","00.1", "%","=", "M-","CE","2", "+","00.1", "%","=", "M-","MR"],
+        "result": "-4.004"
+      },
+      {
+        "args": ["101.0001", "M-","CE","101.0001", "M-","MR"],
+        "result": "-202.0002"
+      }
+    ]
+  },
+  {
+    "suboperation": "memory functions",
+    "dataValues": "subtract from memory negative",
+    "testCases": [
+      {
+        "args": ["-2", "+","00.1", "%","=", "M-","CE","-2", "+","00.1", "%","=", "M-","MR"],
+        "result": "4.004"
+      },
+      {
+        "args": ["-101.0001", "M-","CE","-101.0001", "M-","MR"],
+        "result": "202.0002"
+      }
+    ]
+  },
+  {
+    "suboperation": "memory functions",
+    "dataValues": "clear memory",
+    "testCases": [
+      {
+        "args": ["2", "+","00.1", "%","=", "M-","CE","2", "+","00.1", "%","=", "MC","MR"],
+        "result": "0"
+      },
+      {
+        "args": ["-101.0001", "M-","CE","-101.0001", "M-","MC","MR"],
+        "result": "0"
+      }
+    ]
+  }
+]
