@@ -1,0 +1,29 @@
+{
+  "operation": "07. Special functions",
+  "data": [
+    {
+      "suboperation": "Square root",
+      "dataValues": "of a positive decimal",
+      "testCases": [
+        {
+          "args": ["5.0625", "√x"],
+          "result": "2.25"
+        },
+        {
+          "args": ["4.00000004", "√x"],
+          "result": "2.00000001"
+        }
+      ]
+    },
+    {
+      "suboperation": "Square root",
+      "dataValues": "of a negative decimal",
+      "testCases": [
+        {
+          "args": ["-5.0625", "√x"],
+          "result": "Invalid input"
+        }
+      ]
+    }
+  ]
+}

@@ -1,93 +1,216 @@
 <!doctype html>
 <!-- Original implementation copied from https://www.theonlinecalculator.com/ in 2026-10-26. -->
 <html itemscope itemtype="https://schema.org/WebPage" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Calculator</title>
-    <meta name="description" itemprop="description" content="Basic Online Calculator with 10-digit keypad and 4 functions to add, subtract, multiply and divide numbers. Includes basic handheld calculator functions for square, square root, percent, sign change, Pi and memory." />
+    <meta
+      name="description"
+      itemprop="description"
+      content="Basic Online Calculator with 10-digit keypad and 4 functions to add, subtract, multiply and divide numbers. Includes basic handheld calculator functions for square, square root, percent, sign change, Pi and memory."
+    />
     <meta itemprop="accessibilityFeature" content="highContrastDisplay" />
     <meta itemprop="accessibilityFeature" content="fullKeyboardControl" />
     <meta itemprop="accessibilityFeature" content="fullMouseControl" />
     <meta itemprop="accessibilityFeature" content="fullTouchControl" />
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main itemprop="mainContentOfPage">
-    <div class="calculator-container">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main itemprop="mainContentOfPage">
+      <div class="calculator-container">
         <!-- Calculator Container -->
         <div class="calculator-column">
-            <div class="calculator-wrapper">
-                <div class="calculator">
-                    <!-- Calculator content -->
-                    <div itemscope itemtype="https://schema.org/SoftwareApplication">
-                        <link itemprop="applicationCategory" href="https://schema.org/WebApplication" />
-                        <meta itemprop="operatingSystem" content="Browser required with JavaScript support">
-                        <link itemprop="url" href="https://www.theonlinecalculator.com/" />
-                        <header>
-                            <h1 itemprop="name" class="heading">Basic Calculator</h1>
-                        </header>
-                        <div id="table">
-                            <div id="row">
-                                <div id="calculatorWrap">
-                                    <form action="javascript:void(0);" id="calculator" name="calculator">
-                                        <div>
-                                            <label for="display" class="hidden">display only</label>
-                                            <input type="text" class="window" name="display" id="display" value=" " aria-label="answer display" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button" name="clearButton" value="AC" onClick="display_clear()" title="CE is Clear Entry; AC is Clear All; Press once to clear current entry, press twice to clear all." />
-                                            <input type="button" class="button" name="squarerootButton" value="&radic;x" onClick="func('squareroot')" title="Calculate the square root of the displayed value." />
-                                            <input type="button" class="button" name="percentButton" value="%" onClick="func('percent')" title="Enter displayed value as a percentage and convert to its decimal equivalent." />
-                                            <input type="button" class="button operator" name="divideButton" value="&divide;" onClick="enterOperator('/')" title="Divide (press /)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="sevenButton" value="7" onClick="enterValue('7')" />
-                                            <input type="button" class="button number" name="eightButton" value="8" onClick="enterValue('8')" />
-                                            <input type="button" class="button number" name="nineButton" value="9" onClick="enterValue('9')" />
-                                            <input type="button" class="button operator" name="multiplyButton" value="&times;" onClick="enterOperator('*')" title="Multiply (press &times;)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="fourButton" value="4" onClick="enterValue('4')" />
-                                            <input type="button" class="button number" name="fiveButton" value="5" onClick="enterValue('5')" />
-                                            <input type="button" class="button number" name="sixButton" value="6" onClick="enterValue('6')" />
-                                            <input type="button" class="button operator" name="subtractButton" value="&minus;" onClick="enterOperator('-')" title="Subtract (press -)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="oneButton" value="1" onClick="enterValue('1')" />
-                                            <input type="button" class="button number" name="twoButton" value="2" onClick="enterValue('2')" />
-                                            <input type="button" class="button number" name="threeButton" value="3" onClick="enterValue('3')" />
-                                            <input type="button" class="button operator" name="addButton" value="&#43;" onClick="enterOperator('+')" title="Add (press +)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="zeroButton" value="0" onClick="enterValue('0')" />
-                                            <input type="button" class="button number" name="decimalButton" value="." onClick="enterValue('.')" />
-                                            <input type="button" class="button number" name="negateButton" value="+/-" onClick="func('negate')" title="Negate the displayed value" />
-                                            <input type="button" class="button operator" name="calculateButton" value="&#61;" onclick="enterOperator('=')" title="Execute calculation (press =)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button" name="memoryClearButton" value="MC" onClick="memory_clear()" title="Clear the memory." />
-                                            <input type="button" class="button" name="memoryRecallButton" value="MR" onClick="memory_recall()" title="MR Recall the value stored in memory and display it" />
-                                            <input type="button" class="button" name="memoryMinusButton" value="M-" onClick="memory_minus()" title="Subtract the displayed value from the memory." />
-                                            <input type="button" class="button" name="memoryPlusButton" value="M+" onClick="memory_plus()" title="Add the displayed value to the memory." />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button" name="piButton" value="&pi;" onClick="func('pi')" title="Display the value of Pi" />
-                                            <input type="button" class="button" name="squareButton" value="x&sup2;" onClick="func('square')" title="Square the displayed value" />
-                                            <input type="button" class="button" name="round2Button" value="R2" onClick="func('r2')" title="Round display to 2 decimal places" />
-                                            <input type="button" class="button" name="round0Button" value="R0" onClick="func('r0')" title="Round display to 0 decimal places" />
-                                        </div>
-                                        <input type="hidden" name="memory" value="0" />
-                                    </form>
-                                </div>
-                            </div>
+          <div class="calculator-wrapper">
+            <div class="calculator">
+              <!-- Calculator content -->
+              <div itemscope itemtype="https://schema.org/SoftwareApplication">
+                <link itemprop="applicationCategory" href="https://schema.org/WebApplication" />
+                <meta itemprop="operatingSystem" content="Browser required with JavaScript support" />
+                <link itemprop="url" href="https://www.theonlinecalculator.com/" />
+                <header>
+                  <h1 itemprop="name" class="heading">Basic Calculator</h1>
+                </header>
+                <div id="table">
+                  <div id="row">
+                    <div id="calculatorWrap">
+                      <form action="javascript:void(0);" id="calculator" name="calculator">
+                        <div>
+                          <label for="display" class="hidden">display only</label>
+                          <input type="text" class="window" name="display" id="display" value=" " aria-label="answer display" />
                         </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="clearButton"
+                            value="AC"
+                            onClick="display_clear()"
+                            title="CE is Clear Entry; AC is Clear All; Press once to clear current entry, press twice to clear all."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="squarerootButton"
+                            value="&radic;x"
+                            onClick="func('squareroot')"
+                            title="Calculate the square root of the displayed value."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="percentButton"
+                            value="%"
+                            onClick="func('percent')"
+                            title="Enter displayed value as a percentage and convert to its decimal equivalent."
+                          />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="divideButton"
+                            value="&divide;"
+                            onClick="enterOperator('/')"
+                            title="Divide (press /)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="sevenButton" value="7" onClick="enterValue('7')" />
+                          <input type="button" class="button number" name="eightButton" value="8" onClick="enterValue('8')" />
+                          <input type="button" class="button number" name="nineButton" value="9" onClick="enterValue('9')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="multiplyButton"
+                            value="&times;"
+                            onClick="enterOperator('*')"
+                            title="Multiply (press &times;)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="fourButton" value="4" onClick="enterValue('4')" />
+                          <input type="button" class="button number" name="fiveButton" value="5" onClick="enterValue('5')" />
+                          <input type="button" class="button number" name="sixButton" value="6" onClick="enterValue('6')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="subtractButton"
+                            value="&minus;"
+                            onClick="enterOperator('-')"
+                            title="Subtract (press -)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="oneButton" value="1" onClick="enterValue('1')" />
+                          <input type="button" class="button number" name="twoButton" value="2" onClick="enterValue('2')" />
+                          <input type="button" class="button number" name="threeButton" value="3" onClick="enterValue('3')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="addButton"
+                            value="&#43;"
+                            onClick="enterOperator('+')"
+                            title="Add (press +)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="zeroButton" value="0" onClick="enterValue('0')" />
+                          <input type="button" class="button number" name="decimalButton" value="." onClick="enterValue('.')" />
+                          <input
+                            type="button"
+                            class="button number"
+                            name="negateButton"
+                            value="+/-"
+                            onClick="func('negate')"
+                            title="Negate the displayed value"
+                          />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="calculateButton"
+                            value="&#61;"
+                            onclick="enterOperator('=')"
+                            title="Execute calculation (press =)"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryClearButton"
+                            value="MC"
+                            onClick="memory_clear()"
+                            title="Clear the memory."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryRecallButton"
+                            value="MR"
+                            onClick="memory_recall()"
+                            title="MR Recall the value stored in memory and display it"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryMinusButton"
+                            value="M-"
+                            onClick="memory_minus()"
+                            title="Subtract the displayed value from the memory."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryPlusButton"
+                            value="M+"
+                            onClick="memory_plus()"
+                            title="Add the displayed value to the memory."
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="piButton"
+                            value="&pi;"
+                            onClick="func('pi')"
+                            title="Display the value of Pi"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="squareButton"
+                            value="x&sup2;"
+                            onClick="func('square')"
+                            title="Square the displayed value"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="round2Button"
+                            value="R2"
+                            onClick="func('r2')"
+                            title="Round display to 2 decimal places"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="round0Button"
+                            value="R0"
+                            onClick="func('r0')"
+                            title="Round display to 0 decimal places"
+                          />
+                        </div>
+                        <input type="hidden" name="memory" value="0" />
+                      </form>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <!-- <aside>
+      </div>
+      <!-- <aside>
         <h2>Calculator Operations</h2>
         <p>This basic online calculator is similar to a small handheld calculator and has the standard four functions for addition, subtraction, division and multiplication. Like most 4-function calculators it also includes keys for percent, square, square root and pi. This basic calculator has decimal precision up to 10 digits and offers these functions:</p>
         <ul>
@@ -152,7 +275,7 @@
             </li>
         </ul>
     </aside> -->
-</main>
-<script src="app.js"></script>
-</body>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>

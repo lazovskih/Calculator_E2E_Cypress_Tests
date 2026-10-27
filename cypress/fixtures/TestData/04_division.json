@@ -1,0 +1,113 @@
+{
+  "operation": "04. Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "divide",
+      "dataValues": "with positive integers & decimal",
+      "testCases": [
+        {
+          "args": ["256", "÷", "32", "="],
+          "result": "8"
+        },
+        {
+          "args": ["1000000", "÷", "333", "="],
+          "result": "3,003.003003003"
+        },
+        {
+          "args": ["879", "÷", "2", "="],
+          "result": "439.5"
+        },
+        {
+          "args": ["1.2", "÷", "2.3", "="],
+          "result": "0.5217391304"
+        },
+        {
+          "args": ["0.02", "÷", "0.02", "="],
+          "result": "1"
+        },
+        {
+          "args": ["10", "÷", "0.01", "="],
+          "result": "1,000"
+        }
+      ]
+    },
+    {
+      "suboperation": "divide",
+      "dataValues": "with negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["32", "÷", "-8", "="],
+          "result": "-4"
+        },
+        {
+          "args": ["-1000000", "÷", "-333", "="],
+          "result": "3,003.003003003"
+        },
+        {
+          "args": ["-879", "÷", "2", "="],
+          "result": "-439.5"
+        },
+        {
+          "args": ["-1.2", "÷", "-2.3", "="],
+          "result": "0.5217391304"
+        },
+        {
+          "args": ["-0.02", "÷", "0.02", "="],
+          "result": "-1"
+        },
+        {
+          "args": ["10", "÷", "-0.01", "="],
+          "result": "-1,000"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative divide",
+      "dataValues": "with positive integers & decimal",
+      "testCases": [
+        {
+          "args": ["11", "÷", "22", "÷", "33", "÷", "44", "÷", "55", "="],
+          "result": "0.000006261"
+        },
+        {
+          "args": ["2.01", "÷", "2.02", "÷", "2.03", "÷", "2.04", "="],
+          "result": "0.2402804755"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative divide",
+      "dataValues": "with negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["11", "÷", "-22", "÷", "33", "÷", "44", "÷", "55", "="],
+          "result": "-0.000006261"
+        },
+        {
+          "args": ["-2.01", "÷", "2.02", "÷", "2.03", "÷", "-2.04", "="],
+          "result": "0.2402804755"
+        }
+      ]
+    },
+    {
+      "suboperation": "invalid divide ",
+      "dataValues": "with 'zero' as devizor",
+      "testCases": [
+        {
+          "args": ["256", "÷", "0", "="],
+          "result": "Div by 0"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative operations with invalid divide",
+      "dataValues": "with 'zero' as devizor",
+      "testCases": [
+        {
+          "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0", "="],
+          "result": "Div by 0"
+        }
+      ]
+    }
+  ]
+}

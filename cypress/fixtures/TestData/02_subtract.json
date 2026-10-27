@@ -1,0 +1,89 @@
+{
+  "operation": "02. Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "subtract",
+      "dataValues": "with positive integers & decimal",
+      "testCases": [
+        {
+          "args": ["111111", "−", "100000", "="],
+          "result": "11,111"
+        },
+        {
+          "args": ["10", "−", "11", "="],
+          "result": "-1"
+        },
+        {
+          "args": ["3000000000", "−", "2000000000", "="],
+          "result": "1,000,000,000"
+        },
+        {
+          "args": ["1.2", "−", "2.3", "="],
+          "result": "-1.1"
+        },
+        {
+          "args": ["0.0002", "−", "0.0002", "="],
+          "result": "0"
+        },
+        {
+          "args": ["0.0004", "−", "0.0002", "="],
+          "result": "0.0002"
+        }
+      ]
+    },
+    {
+      "suboperation": "subtract",
+      "dataValues": "with negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["-111111", "−", "100000", "="],
+          "result": "-211,111"
+        },
+        {
+          "args": ["10", "−", "-11", "="],
+          "result": "21"
+        },
+        {
+          "args": ["-3000000000", "−", "2000000000", "="],
+          "result": "-5,000,000,000"
+        },
+        {
+          "args": ["-1.2", "−", "-2.3", "="],
+          "result": "1.1"
+        },
+        {
+          "args": ["0.0002", "−", "-0.0002", "="],
+          "result": "0.0004"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative subtract",
+      "dataValues": "with positive integers & decimal",
+      "testCases": [
+        {
+          "args": ["110", "−", "120", "−", "130", "−", "140", "−", "150", "="],
+          "result": "-430"
+        },
+        {
+          "args": ["2.1", "−", "2.2", "−", "2.3", "−", "2.4", "="],
+          "result": "-4.8"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative subtract",
+      "dataValues": "with negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["110", "−", "120", "−", "-130", "−", "140", "−", "-150", "="],
+          "result": "130"
+        },
+        {
+          "args": ["-2.1", "−", "2.2", "−", "2.3", "−", "-2.4", "="],
+          "result": "-4.2"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "operation": "06. Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "Multiple cumulative operations",
+      "dataValues": "with positive & negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11", "="],
+          "result": "-99"
+        },
+        {
+          "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1", "="],
+          "result": "459"
+        },
+        {
+          "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1", "="],
+          "result": "-551"
+        }
+      ]
+    },
+    {
+      "suboperation": "Multiple cumulative with equal suboperation",
+      "dataValues": "with positive & negative integers & decimal",
+      "testCases": [
+        {
+          "args": ["11", "+", "22", "÷", "33", "−", "10", "×", "11", "=", "+", "99", "="],
+          "result": "0"
+        },
+        {
+          "args": ["22", "÷", "11", "+", "44", "×", "10", "−", "1", "=", "−", "459", "="],
+          "result": "0"
+        },
+        {
+          "args": ["-33", "÷", "3", "+", "-44", "×", "10", "−", "1", "=", "+", "551", "="],
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "suboperation": "Multiple suboperation result to last operand",
+      "dataValues": "with positive integers",
+      "testCases": [
+        {
+          "args": ["11", "+", "−", "×", "÷", "33", "="],
+          "result": "0.3333333333"
+        }
+      ]
+    },
+    {
+      "suboperation": "Multiple operations",
+      "dataValues": "with not complete arguments",
+      "testCases": [
+        {
+          "args": ["+", "−", "×", "11", "÷", "+", "−", "="],
+          "result": "11"
+        }
+      ]
+    }
+  ]
+}
