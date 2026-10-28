@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "square (power of 2)",
-      "dataValues": "with positive and negative integers",
+      "dataValues": "with positive and negative integer",
       "testCases": [
         {
           "args": ["2", "x²", "="],
@@ -17,7 +17,7 @@
     },
     {
       "suboperation": "square (power of 2)",
-      "dataValues": "with positive and negative decimals",
+      "dataValues": "with positive and negative decimal",
       "testCases": [
         {
           "args": [".5", "x²", "="],
@@ -35,7 +35,7 @@
     },
     {
       "suboperation": "square (power of 2)",
-      "dataValues": "with large positive and negative integers",
+      "dataValues": "with large positive and negative integer",
       "testCases": [
         {
           "args": ["23456789012345", "x²", "="],
@@ -49,7 +49,7 @@
     },
     {
       "suboperation": "square (power of 2)",
-      "dataValues": "with large positive and negative decimals",
+      "dataValues": "with large positive and negative decimal",
       "testCases": [
         {
           "args": ["-23456789012345", "x²", "="],

@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "multiple cumulative calculations",
-      "dataValues": "with positive & negative integers & decimal",
+      "dataValues": "with positive & negative integer & decimal",
       "testCases": [
         {
           "args": ["11", "+", "22", "÷", "33", "-", "10", "×", "11", "="],
@@ -21,7 +21,7 @@
     },
     {
       "suboperation": "chained calculations with intermediate equals",
-      "dataValues": "with positive & negative integers & decimal",
+      "dataValues": "with positive & negative integer & decimal",
       "testCases": [
         {
           "args": ["11", "+", "22", "÷", "33", "-", "10", "×", "11", "=", "+", "99", "="],
@@ -39,7 +39,7 @@
     },
     {
       "suboperation": "consecutive operators resolving to last operator",
-      "dataValues": "with positive integers",
+      "dataValues": "with positive integer",
       "testCases": [
         {
           "args": ["11", "+", "-", "×", "÷", "33", "="],

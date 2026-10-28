@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "square root",
-      "dataValues": "with positive integers and decimals",
+      "dataValues": "with positive integer & decimal",
       "testCases": [
         {
           "args": ["25", "√x"],
@@ -17,7 +17,7 @@
     },
     {
       "suboperation": "square root",
-      "dataValues": "with negative integers and decimals",
+      "dataValues": "with negative integer & decimal",
       "testCases": [
         {
           "args": ["-525", "√x"],

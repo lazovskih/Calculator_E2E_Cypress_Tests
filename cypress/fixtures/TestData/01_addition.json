@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "addition",
-      "dataValues": "with positive integers & decimals",
+      "dataValues": "with positive integer & decimal",
       "testCases": [
         {
           "args": ["1", "+", "2", "="],
@@ -45,7 +45,7 @@
     },
     {
       "suboperation": "addition",
-      "dataValues": "with negative integers & decimal",
+      "dataValues": "with negative integer & decimal",
       "testCases": [
         {
           "args": ["1", "+", "-2", "="],
@@ -79,7 +79,7 @@
     },
     {
       "suboperation": "cumulative addition",
-      "dataValues": "with positive integers & decimals",
+      "dataValues": "with positive integer & decimal",
       "testCases": [
         {
           "args": ["110", "+", "120", "+", "130", "+", "140", "+", "150", "="],
@@ -93,7 +93,7 @@
     },
     {
       "suboperation": "cumulative addition",
-      "dataValues": "with negative integers & decimal",
+      "dataValues": "with negative integer & decimal",
       "testCases": [
         {
           "args": ["110", "+", "120", "+", "-130", "+", "140", "+", "-150", "="],

@@ -296,3 +296,81 @@ div#titleSmall span.soup {
 .calculator-wrapper {
   width: 100%;
 }
+
+/* Collapsible aside section */
+aside {
+  max-width: 600px;
+  margin: 10px auto 30px auto;
+  padding: 0 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333333;
+}
+
+aside details {
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  background-color: #fafafa;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+}
+
+aside details[open] {
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+aside summary {
+  padding: 12px 16px;
+  font-size: 1.05em;
+  font-weight: bold;
+  color: #444444;
+  cursor: pointer;
+  background-color: #f2f2f2;
+  border-radius: 6px;
+  user-select: none;
+  outline: none;
+}
+
+aside summary:hover {
+  background-color: #e8e8e8;
+  color: #111111;
+}
+
+aside details[open] summary {
+  border-bottom: 1px solid #dcdcdc;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+aside .aside-content {
+  padding: 15px 20px;
+  line-height: 1.6;
+}
+
+aside .aside-content h2 {
+  font-size: 1.2em;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #333333;
+}
+
+aside .aside-content h3 {
+  font-size: 1.05em;
+  margin-top: 15px;
+  margin-bottom: 8px;
+  color: #444444;
+}
+
+aside .aside-content p {
+  margin: 0.5em 0;
+}
+
+aside .aside-content ul {
+  padding-left: 25px;
+  margin: 0.5em 0;
+}
+
+aside .aside-content li {
+  margin-bottom: 6px;
+}
+

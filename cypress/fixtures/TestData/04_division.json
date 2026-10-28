@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "division",
-      "dataValues": "with positive integers & decimals",
+      "dataValues": "with positive integer & decimal",
       "testCases": [
         {
           "args": ["256", "÷", "32", "="],
@@ -33,7 +33,7 @@
     },
     {
       "suboperation": "division",
-      "dataValues": "with negative integers & decimal",
+      "dataValues": "with negative integer & decimal",
       "testCases": [
         {
           "args": ["32", "÷", "-8", "="],
@@ -63,7 +63,7 @@
     },
     {
       "suboperation": "cumulative division",
-      "dataValues": "with positive integers & decimals",
+      "dataValues": "with positive integer & decimal",
       "testCases": [
         {
           "args": ["11", "÷", "22", "÷", "33", "÷", "44", "÷", "55", "="],
@@ -77,7 +77,7 @@
     },
     {
       "suboperation": "cumulative division",
-      "dataValues": "with negative integers & decimal",
+      "dataValues": "with negative integer & decimal",
       "testCases": [
         {
           "args": ["11", "÷", "-22", "÷", "33", "÷", "44", "÷", "55", "="],
