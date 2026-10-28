@@ -99,7 +99,7 @@ calculator-e2e-tests/
 │       └── cypress.yml                       # GitHub Actions CI/CD workflow configuration
 ├── cypress/
 │   ├── PageObjects/
-│   │   └── CalculatorPage.js                 # Page Object for Calculator selectors and interactions
+│   │   └── calculatorPage.js                 # Page Object for Calculator selectors and interactions
 │   ├── e2e/
 │   │   ├── 1_Initialization_&_UI_Tests.cy.js # Initialization & UI Spec (10 tests)
 │   │   └── 2_Functional_Tests.cy.js          # Data-driven functional tests (108 tests)

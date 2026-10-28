@@ -1,4 +1,4 @@
-import { calculatorPage } from "../PageObjects/CalculatorPage.js";
+import { calculatorPage } from "../PageObjects/calculatorPage.js";
 const currentPage = new calculatorPage();
 
 beforeEach(() => {
