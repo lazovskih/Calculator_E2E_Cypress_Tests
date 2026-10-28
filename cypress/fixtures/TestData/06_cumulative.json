@@ -1,0 +1,61 @@
+{
+  "operation": "Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "multiple cumulative calculations",
+      "dataValues": "with positive & negative integer & decimal values",
+      "testCases": [
+        {
+          "args": ["11", "+", "22", "÷", "33", "-", "10", "×", "11", "="],
+          "result": "-99"
+        },
+        {
+          "args": ["22", "÷", "11", "+", "44", "×", "10", "-", "1", "="],
+          "result": "459"
+        },
+        {
+          "args": ["-33", "÷", "3", "+", "-44", "×", "10", "-", "1", "="],
+          "result": "-551"
+        }
+      ]
+    },
+    {
+      "suboperation": "chained calculations with intermediate equals",
+      "dataValues": "with positive & negative integer & decimal values",
+      "testCases": [
+        {
+          "args": ["11", "+", "22", "÷", "33", "-", "10", "×", "11", "=", "+", "99", "="],
+          "result": "0"
+        },
+        {
+          "args": ["22", "÷", "11", "+", "44", "×", "10", "-", "1", "=", "-", "459", "="],
+          "result": "0"
+        },
+        {
+          "args": ["-33", "÷", "3", "+", "-44", "×", "10", "-", "1", "=", "+", "551", "="],
+          "result": "0"
+        }
+      ]
+    },
+    {
+      "suboperation": "consecutive operators resolving to last operator",
+      "dataValues": "with positive integer values",
+      "testCases": [
+        {
+          "args": ["11", "+", "-", "×", "÷", "33", "="],
+          "result": "0.3333333333"
+        }
+      ]
+    },
+    {
+      "suboperation": "consecutive leading and trailing operators",
+      "dataValues": "with incomplete arguments",
+      "testCases": [
+        {
+          "args": ["+", "-", "×", "11", "÷", "+", "-", "="],
+          "result": "11"
+        }
+      ]
+    }
+  ]
+}

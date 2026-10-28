@@ -1,0 +1,33 @@
+{
+  "operation": "Special functions",
+  "data": [
+    {
+      "suboperation": "square root",
+      "dataValues": "with positive integer & decimal values",
+      "testCases": [
+        {
+          "args": ["25", "√x"],
+          "result": "5"
+        },
+        {
+          "args": ["4.00000004", "√x"],
+          "result": "2.00000001"
+        }
+      ]
+    },
+    {
+      "suboperation": "square root",
+      "dataValues": "with negative integer & decimal values",
+      "testCases": [
+        {
+          "args": ["-525", "√x"],
+          "result": "Invalid input"
+        },
+        {
+          "args": ["-5.0625", "√x"],
+          "result": "Invalid input"
+        }
+      ]
+    }
+  ]
+}

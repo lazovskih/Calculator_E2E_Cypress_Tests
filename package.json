@@ -14,6 +14,6 @@
   "author": "Lazovskih",
   "license": "MIT",
   "devDependencies": {
-    "cypress": "^15.21.1"
+    "cypress": "^16.2.1"
   }
 }

@@ -1,158 +1,305 @@
 <!doctype html>
+<!-- Original implementation copied from https://www.theonlinecalculator.com/ in 2026-10-26. -->
 <html itemscope itemtype="https://schema.org/WebPage" lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
     <title>Calculator</title>
-    <meta name="description" itemprop="description" content="Basic Online Calculator with 10-digit keypad and 4 functions to add, subtract, multiply and divide numbers. Includes basic handheld calculator functions for square, square root, percent, sign change, Pi and memory." />
+    <meta
+      name="description"
+      itemprop="description"
+      content="Basic Online Calculator with 10-digit keypad and 4 functions to add, subtract, multiply and divide numbers. Includes basic handheld calculator functions for square, square root, percent, sign change, Pi and memory."
+    />
     <meta itemprop="accessibilityFeature" content="highContrastDisplay" />
     <meta itemprop="accessibilityFeature" content="fullKeyboardControl" />
     <meta itemprop="accessibilityFeature" content="fullMouseControl" />
     <meta itemprop="accessibilityFeature" content="fullTouchControl" />
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-<main itemprop="mainContentOfPage">
-    <div class="calculator-container">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main itemprop="mainContentOfPage">
+      <div class="calculator-container">
         <!-- Calculator Container -->
         <div class="calculator-column">
-            <div class="calculator-wrapper">
-                <div class="calculator">
-                    <!-- Calculator content -->
-                    <div itemscope itemtype="https://schema.org/SoftwareApplication">
-                        <link itemprop="applicationCategory" href="https://schema.org/WebApplication" />
-                        <meta itemprop="operatingSystem" content="Browser required with JavaScript support">
-                        <link itemprop="url" href="https://www.theonlinecalculator.com/" />
-                        <header>
-                            <h1 itemprop="name" class="heading">Basic Calculator</h1>
-                        </header>
-                        <div id="table">
-                            <div id="row">
-                                <div id="calculatorWrap">
-                                    <form action="javascript:void(0);" id="calculator" name="calculator">
-                                        <div>
-                                            <label for="display" class="hidden">display only</label>
-                                            <input type="text" class="window" name="display" id="display" value=" " aria-label="answer display" />
-                                        </div>
-
-                                        <div>
-                                            <input type="button" class="button" name="clearButton" value="AC" onClick="display_clear()" title="CE is Clear Entry; AC is Clear All; Press once to clear current entry, press twice to clear all." />
-                                            <input type="button" class="button" name="root2" value="&radic;x" onClick="func('squareroot')" title="Calculate the square root of the displayed value." />
-                                            <input type="button" class="button" name="percentButton" value="%" onClick="func('percent')" title="Enter displayed value as a percentage and convert to its decimal equivalent." />
-                                            <input type="button" class="button operator" name="divide" value="&divide;" onClick="enterOperator('/')" title="Divide (press /)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="seven" value="7" onClick="enterValue('7')" />
-                                            <input type="button" class="button number" name="eight" value="8" onClick="enterValue('8')" />
-                                            <input type="button" class="button number" name="nine" value="9" onClick="enterValue('9')" />
-                                            <input type="button" class="button operator" name="multiply" value="&times;" onClick="enterOperator('*')" title="Multiply (press &times;)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="four" value="4" onClick="enterValue('4')" />
-                                            <input type="button" class="button number" name="five" value="5" onClick="enterValue('5')" />
-                                            <input type="button" class="button number" name="six" value="6" onClick="enterValue('6')" />
-                                            <input type="button" class="button operator" name="subtract" value="&minus;" onClick="enterOperator('-')" title="Subtract (press -)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="one" value="1" onClick="enterValue('1')" />
-                                            <input type="button" class="button number" name="two" value="2" onClick="enterValue('2')" />
-                                            <input type="button" class="button number" name="three" value="3" onClick="enterValue('3')" />
-                                            <input type="button" class="button operator" name="add" value="&#43;" onClick="enterOperator('+')" title="Add (press +)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button number" name="zero" value="0" onClick="enterValue('0')" />
-                                            <input type="button" class="button number" name="decimal" value="." onClick="enterValue('.')" />
-                                            <input type="button" class="button number" name="negateButton" value="+/-" onClick="func('negate')" title="Negate the displayed value" />
-                                            <input type="button" class="button operator" name="calculate" value="&#61;" onclick="enterOperator('=')" title="Execute calculation (press =)" />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button" name="memory_clearButton" value="MC " onClick="memory_clear()" title="Clear the memory." />
-                                            <input type="button" class="button" name="memory_recallButton" value="MR" onClick="memory_recall()" title="MR Recall the value stored in memory and display it" />
-                                            <input type="button" class="button" name="memory_minusButton" value="M-" onClick="memory_minus()" title="Subtract the displayed value from the memory." />
-                                            <input type="button" class="button" name="memory_plusButton" value="M+" onClick="memory_plus()" title="Add the displayed value to the memory." />
-                                        </div>
-                                        <div>
-                                            <input type="button" class="button" name="negateButton" value="&pi;" onClick="func('pi')" title="Display the value of Pi" />
-                                            <input type="button" class="button" name="negateButton" value="x&sup2;" onClick="func('square')" title="Square the displayed value" />
-                                            <input type="button" class="button" name="zero" value="R2" onClick="func('r2')" title="Round display to 2 decimal places" />
-                                            <input type="button" class="button" name="decimal" value="R0" onClick="func('r0')" title="Round display to 0 decimal places" />
-                                        </div>
-                                        <input type="hidden" name="memory" value="0" />
-                                    </form>
-                                </div>
-                            </div>
+          <div class="calculator-wrapper">
+            <div class="calculator">
+              <!-- Calculator content -->
+              <div itemscope itemtype="https://schema.org/SoftwareApplication">
+                <link itemprop="applicationCategory" href="https://schema.org/WebApplication" />
+                <meta itemprop="operatingSystem" content="Browser required with JavaScript support" />
+                <link itemprop="url" href="https://www.theonlinecalculator.com/" />
+                <header>
+                  <h1 itemprop="name" class="heading">Basic Calculator</h1>
+                </header>
+                <div id="table">
+                  <div id="row">
+                    <div id="calculatorWrap">
+                      <form action="javascript:void(0);" id="calculator" name="calculator">
+                        <div>
+                          <label for="display" class="hidden">display only</label>
+                          <input type="text" class="window" name="display" id="display" value=" " aria-label="answer display" />
                         </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="clearButton"
+                            value="AC"
+                            onClick="display_clear()"
+                            title="CE is Clear Entry; AC is Clear All; Press once to clear current entry, press twice to clear all."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="squarerootButton"
+                            value="&radic;x"
+                            onClick="func('squareroot')"
+                            title="Calculate the square root of the displayed value."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="percentButton"
+                            value="%"
+                            onClick="func('percent')"
+                            title="Enter displayed value as a percentage and convert to its decimal equivalent."
+                          />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="divideButton"
+                            value="&divide;"
+                            onClick="enterOperator('/')"
+                            title="Divide (press /)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="sevenButton" value="7" onClick="enterValue('7')" />
+                          <input type="button" class="button number" name="eightButton" value="8" onClick="enterValue('8')" />
+                          <input type="button" class="button number" name="nineButton" value="9" onClick="enterValue('9')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="multiplyButton"
+                            value="&times;"
+                            onClick="enterOperator('*')"
+                            title="Multiply (press &times;)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="fourButton" value="4" onClick="enterValue('4')" />
+                          <input type="button" class="button number" name="fiveButton" value="5" onClick="enterValue('5')" />
+                          <input type="button" class="button number" name="sixButton" value="6" onClick="enterValue('6')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="subtractButton"
+                            value="-"
+                            onClick="enterOperator('-')"
+                            title="Subtract (press -)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="oneButton" value="1" onClick="enterValue('1')" />
+                          <input type="button" class="button number" name="twoButton" value="2" onClick="enterValue('2')" />
+                          <input type="button" class="button number" name="threeButton" value="3" onClick="enterValue('3')" />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="addButton"
+                            value="&#43;"
+                            onClick="enterOperator('+')"
+                            title="Add (press +)"
+                          />
+                        </div>
+                        <div>
+                          <input type="button" class="button number" name="zeroButton" value="0" onClick="enterValue('0')" />
+                          <input type="button" class="button number" name="decimalButton" value="." onClick="enterValue('.')" />
+                          <input
+                            type="button"
+                            class="button number"
+                            name="negateButton"
+                            value="+/-"
+                            onClick="func('negate')"
+                            title="Negate the displayed value"
+                          />
+                          <input
+                            type="button"
+                            class="button operator"
+                            name="calculateButton"
+                            value="&#61;"
+                            onclick="enterOperator('=')"
+                            title="Execute calculation (press =)"
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryClearButton"
+                            value="MC"
+                            onClick="memory_clear()"
+                            title="Clear the memory."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryRecallButton"
+                            value="MR"
+                            onClick="memory_recall()"
+                            title="MR Recall the value stored in memory and display it"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryMinusButton"
+                            value="M-"
+                            onClick="memory_minus()"
+                            title="Subtract the displayed value from the memory."
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="memoryPlusButton"
+                            value="M+"
+                            onClick="memory_plus()"
+                            title="Add the displayed value to the memory."
+                          />
+                        </div>
+                        <div>
+                          <input
+                            type="button"
+                            class="button"
+                            name="piButton"
+                            value="&pi;"
+                            onClick="func('pi')"
+                            title="Display the value of Pi"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="squareButton"
+                            value="x&sup2;"
+                            onClick="func('square')"
+                            title="Square the displayed value"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="round2Button"
+                            value="R2"
+                            onClick="func('r2')"
+                            title="Round display to 2 decimal places"
+                          />
+                          <input
+                            type="button"
+                            class="button"
+                            name="round0Button"
+                            value="R0"
+                            onClick="func('r0')"
+                            title="Round display to 0 decimal places"
+                          />
+                        </div>
+                        <input type="hidden" name="memory" value="0" />
+                      </form>
                     </div>
+                  </div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    </div>
-    <aside>
-        <h2>Calculator Operations</h2>
-        <p>This basic online calculator is similar to a small handheld calculator and has the standard four functions for addition, subtraction, division and multiplication. Like most 4-function calculators it also includes keys for percent, square, square root and pi. This basic calculator has decimal precision up to 10 digits and offers these functions:</p>
-        <ul>
-            <li><strong>mc = Memory Clear:</strong> clear calculator memory</li>
-            <li><strong>m+ = Memory Plus:</strong> add displayed value to memory</li>
-            <li><strong>m- = Memory Minus:</strong> subtract displayed value from memory</li>
-            <li><strong>mr = Memory Recall:</strong> display the memory value</li>
-            <li><strong>CE = Clear Entry:</strong> clear current display value, changes to AC</li>
-            <li><strong>AC = All Clear:</strong> clear all and start a new operation</li>
-            <li><strong>&radic;x = Square Root:</strong> take the square root of the displayed value and display it</li>
-            <li>
+      </div>
+      <aside>
+        <details>
+          <summary>Calculator Operations & Instructions</summary>
+          <div class="aside-content">
+            <h2>Calculator Operations</h2>
+            <p>
+              This basic online calculator is similar to a small handheld calculator and has the standard four functions for addition,
+              subtraction, division and multiplication. Like most 4-function calculators it also includes keys for percent, square,
+              square root and pi. This basic calculator has decimal precision up to 10 digits and offers these functions:
+            </p>
+            <ul>
+              <li><strong>mc = Memory Clear:</strong> clear calculator memory</li>
+              <li><strong>m+ = Memory Plus:</strong> add displayed value to memory</li>
+              <li><strong>m- = Memory Minus:</strong> subtract displayed value from memory</li>
+              <li><strong>mr = Memory Recall:</strong> display the memory value</li>
+              <li><strong>CE = Clear Entry:</strong> clear current display value, changes to AC</li>
+              <li><strong>AC = All Clear:</strong> clear all and start a new operation</li>
+              <li><strong>&radic;x = Square Root:</strong> take the square root of the displayed value and display it</li>
+              <li>
                 <strong>+/- = Plus/Minus</strong>: change the sign of the displayed value from positive to negative or vice versa
-            </li>
-            <li><strong>&pi; = pi:</strong> display the value of &pi; as 3.141592654 to use in a calculation</li>
-            <li><strong>x&sup2; = Square:</strong> square the displayed value and display it</li>
-            <li>
-                <strong>R2 = Round to 2 decimals:</strong> round the current display value to 2 decimal places such as in money or currency format
-            </li>
-            <li><strong>R0 = Round to 0 decimals:</strong> round off the current display value to 0 decimal places</li>
-            <li><strong>% = Percent:</strong> use displayed value to calculate a percentage</li>
-        </ul>
-        <h2>Accessible Calculator Features</h2>
-        <p>
-            <strong>Zoom</strong>: Increase the size of the calculator in your browser using your browser's zoom feature. The size of the calculator, text and buttons changes proportionately.
-        </p>
-        <p>
-            <strong>Touch Screen Zoom</strong>: Increase the size of the calculator on your touch screen by zooming with your fingers. The size of the calculator, text and buttons changes proportionately.
-        </p>
-        <p>
-            <strong>Text Size</strong>: In some browsers, such as Chrome desktop, you can change the text size in your browser settings and the size of the calculator, text and buttons will get larger or smaller proportionately.
-        </p>
-        <p>
-            <strong>Keyboard Control</strong>: You can use the calculator without a mouse by tabbing among the calculator keys. Press &quot;Enter&quot; when a key is focused. This method can be arduous however, since you must tab through all keys in sequence.
-        </p>
-        <p>
-            <strong>Number Keypad Control</strong>: You can use the calculator with with most Number Pads and Keyboards in the most popular browsers for numbers, clear, and the basic functions of addition, subtraction, multiplication, and division and delete/backspace.
-        </p>
-        <p>&nbsp;</p>
-        <h3>Calculating Percentages</h3>
-        <ul>
-            <li>Multiplication and Division will convert the displayed value to a percent in decimal form and complete the operation when you press [=]
+              </li>
+              <li><strong>&pi; = pi:</strong> display the value of &pi; as 3.141592654 to use in a calculation</li>
+              <li><strong>x&sup2; = Square:</strong> square the displayed value and display it</li>
+              <li>
+                <strong>R2 = Round to 2 decimals:</strong> round the current display value to 2 decimal places such as in money or
+                currency format
+              </li>
+              <li><strong>R0 = Round to 0 decimals:</strong> round off the current display value to 0 decimal places</li>
+              <li><strong>% = Percent:</strong> use displayed value to calculate a percentage</li>
+            </ul>
+            <h2>Accessible Calculator Features</h2>
+            <p>
+              <strong>Zoom</strong>: Increase the size of the calculator in your browser using your browser's zoom feature. The size
+              of the calculator, text and buttons changes proportionately.
+            </p>
+            <p>
+              <strong>Touch Screen Zoom</strong>: Increase the size of the calculator on your touch screen by zooming with your
+              fingers. The size of the calculator, text and buttons changes proportionately.
+            </p>
+            <p>
+              <strong>Text Size</strong>: In some browsers, such as Chrome desktop, you can change the text size in your browser
+              settings and the size of the calculator, text and buttons will get larger or smaller proportionately.
+            </p>
+            <p>
+              <strong>Keyboard Control</strong>: You can use the calculator without a mouse by tabbing among the calculator keys.
+              Press &quot;Enter&quot; when a key is focused. This method can be arduous however, since you must tab through all keys
+              in sequence.
+            </p>
+            <p>
+              <strong>Number Keypad Control</strong>: You can use the calculator with with most Number Pads and Keyboards in the most
+              popular browsers for numbers, clear, and the basic functions of addition, subtraction, multiplication, and division and
+              delete/backspace.
+            </p>
+            <p>&nbsp;</p>
+            <h3>Calculating Percentages</h3>
+            <ul>
+              <li>
+                Multiplication and Division will convert the displayed value to a percent in decimal form and complete the operation
+                when you press [=]
                 <ul>
-                    <li>Example: find 20% of 25</li>
-                    <li>Enter 25 x 20 % and the display changes 20% to 0.2</li>
-                    <li>Enter = to complete the calculation 25 x 0.2 = 5. The answer 5 shows in the display.</li>
+                  <li>Example: find 20% of 25</li>
+                  <li>Enter 25 x 20 % and the display changes 20% to 0.2</li>
+                  <li>Enter = to complete the calculation 25 x 0.2 = 5. The answer 5 shows in the display.</li>
                 </ul>
-            </li>
-            <li>Addition and Subtraction will add or subtract the percentage of a value
+              </li>
+              <li>
+                Addition and Subtraction will add or subtract the percentage of a value
                 <ul>
-                    <li>Example: add 20% to 25</li>
-                    <li>Enter 25 + 20 % and the display changes to 5. (5 is 20% of 25)</li>
-                    <li>Enter = to complete the calculation 25 + 5 = 30. The answer 30 shows in the display.</li>
+                  <li>Example: add 20% to 25</li>
+                  <li>Enter 25 + 20 % and the display changes to 5. (5 is 20% of 25)</li>
+                  <li>Enter = to complete the calculation 25 + 5 = 30. The answer 30 shows in the display.</li>
                 </ul>
-            </li>
-            <li>Tax Calculation
+              </li>
+              <li>
+                Tax Calculation
                 <ul>
-                    <li>Example: add 6% tax to a purchase of $851</li>
-                    <li>Enter 851 + 6 % and the display changes to 51.06. (51.06 is 6% of 851)</li>
-                    <li>Enter = to complete the calculation 851 + 51.06 = 902.06. The answer 902.06 shows in the display.</li>
-                    <li>Note: for other problems you might get an answer with more than 2 decimal places. Use the R2 key to round off to dollars and cents. Use R0 to round off to only dollars.</li>
+                  <li>Example: add 6% tax to a purchase of $851</li>
+                  <li>Enter 851 + 6 % and the display changes to 51.06. (51.06 is 6% of 851)</li>
+                  <li>Enter = to complete the calculation 851 + 51.06 = 902.06. The answer 902.06 shows in the display.</li>
+                  <li>
+                    Note: for other problems you might get an answer with more than 2 decimal places. Use the R2 key to round off to
+                    dollars and cents. Use R0 to round off to only dollars.
+                  </li>
                 </ul>
-            </li>
-        </ul>
-    </aside>
-</main>
-<script src="app.js"></script>
-</body>
+              </li>
+            </ul>
+          </div>
+        </details>
+      </aside>
+    </main>
+    <script src="app.js"></script>
+  </body>
 </html>

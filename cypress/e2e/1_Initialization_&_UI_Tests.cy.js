@@ -1,9 +1,12 @@
-import { CalculatorPage } from "../PageObjects/CalculatorPage.js";
-const currentPage = new CalculatorPage();
+import { calculatorPage } from "../PageObjects/calculatorPage.js";
+const currentPage = new calculatorPage();
 
 beforeEach(() => {
   cy.env(["baseUrl"]).then(({ baseUrl }) => {
     cy.visit(baseUrl);
+
+    // Set initial state for "AC" button, which is also "clearButton"
+    currentPage.button_clearButton.value = "AC";
   });
 });
 
@@ -12,6 +15,7 @@ context("1. Initialization and UI Tests", () => {
     for (const key in currentPage) {
       if (currentPage.hasOwnProperty(key) && currentPage[key].locator) {
         cy.log(`Verified element is present: |${key}|`);
+
         // first() is used to select 0 button that has same locator as R2
         cy.get(currentPage[key].locator).first().should("be.visible").and("have.value", currentPage[key].value);
       }
@@ -25,13 +29,13 @@ context("1. Initialization and UI Tests", () => {
         cy.get(currentPage[key].locator).first().click();
 
         // Check if the display shows the correct value
-        cy.get(currentPage.results.locator).should("have.value", currentPage[key].value);
+        cy.get(currentPage.display.locator).should("have.value", currentPage[key].value);
 
         // Clear the display after each button press
         cy.get(currentPage.button_clearButton.locator).click();
 
         // Check if the display is cleared
-        cy.get(currentPage.results.locator).should("have.value", "");
+        cy.get(currentPage.display.locator).should("have.value", "");
       }
     }
   });
@@ -46,7 +50,7 @@ context("1. Initialization and UI Tests", () => {
     }
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "7.001");
+    cy.get(currentPage.display.locator).should("have.value", "7.001");
   });
 
   it("1.4 Validate how the calculator handles leading zeros.", () => {
@@ -59,7 +63,7 @@ context("1. Initialization and UI Tests", () => {
     }
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "7.001");
+    cy.get(currentPage.display.locator).should("have.value", "7.001");
   });
 
   it("1.5 Validate that pressing “CE” button clears only current entry", () => {
@@ -70,10 +74,10 @@ context("1. Initialization and UI Tests", () => {
       // Click the number/decimal button
       cy.get(buttonLocator).first().click();
     }
-    cy.get(currentPage.button_add.locator).first().click();
+    cy.get(currentPage.button_addButton.locator).first().click();
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "881");
+    cy.get(currentPage.display.locator).should("have.value", "881");
 
     const testValueB = "19";
     const numKeysB = testValueB.split("");
@@ -92,9 +96,10 @@ context("1. Initialization and UI Tests", () => {
       // Click the number/decimal button
       cy.get(buttonLocator).first().click();
     }
-    cy.get(currentPage.button_calculate.locator).first().click();
+    cy.get(currentPage.button_calculateButton.locator).first().click();
+
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "1,000");
+    cy.get(currentPage.display.locator).should("have.value", "1,000");
   });
 
   it("1.6 Validate that a number can be set as negative and set back to positive.", () => {
@@ -109,42 +114,63 @@ context("1. Initialization and UI Tests", () => {
     cy.get(currentPage.button_negateButton.locator).first().click();
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "-123.456");
+    cy.get(currentPage.display.locator).should("have.value", "-123.456");
 
     // Click +/- button to set the number as positive
     cy.get(currentPage.button_negateButton.locator).first().click();
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "123.456");
+    cy.get(currentPage.display.locator).should("have.value", "123.456");
   });
 
   // Tests 1.7 & 1.8 only verified with “divide” and “subtract” as “multiply” and “add”
   // do not produce valid results when run in automated script, but works fine when verified manually.
   it("1.7 Validate typing on the display with 'Equals' and 'Enter' buttons produce valid results.", () => {
     // Type arguments and operations directly into the display
-    cy.get(currentPage.results.locator).click().type("123.456-100.456=");
+    cy.get(currentPage.display.locator).click().type("123.456-100.456=");
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "23");
+    cy.get(currentPage.display.locator).should("have.value", "23");
 
     // Type arguments and operations directly into the display
-    cy.get(currentPage.results.locator).click().type("10/5{enter}");
+    cy.get(currentPage.display.locator).click().type("10/5{enter}");
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "2");
+    cy.get(currentPage.display.locator).should("have.value", "2");
   });
 
-  it("1.8 Validate typing after 'Equals' and 'Enter' buttons produce valid results.", () => {
+  it("1.8 Validate typing after 'Equals' and 'Enter' buttons produce valid display.", () => {
     // Type arguments and operations directly into the display
-    cy.get(currentPage.results.locator).click().type("123.456-100.456=-2=");
+    cy.get(currentPage.display.locator).click().type("123.456-100.456=-2=");
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "21");
+    cy.get(currentPage.display.locator).should("have.value", "21");
 
     // Type arguments and operations directly into the display
-    cy.get(currentPage.results.locator).click().type("10/5-2{enter}");
+    cy.get(currentPage.display.locator).click().type("10/5-2{enter}");
 
     // Check if the display shows the correct value
-    cy.get(currentPage.results.locator).should("have.value", "0");
+    cy.get(currentPage.display.locator).should("have.value", "0");
+  });
+
+  it("1.9 Validate click on π button produces valid result.", () => {
+    // Click π button
+    cy.get(currentPage.button_piButton.locator).click();
+
+    // Check if the display shows the correct value
+    cy.get(currentPage.display.locator).should("have.value", "3.1415926536");
+  });
+
+  it("1.10 Validate button AC changes to CE after first button press.", () => {
+    cy.get(currentPage.button_clearButton.locator).click();
+
+    // Check if the display shows the correct value
+    cy.get(currentPage.button_clearButton.locator).should("have.value", currentPage.button_clearButton.value);
+
+    // Click π button
+    cy.get(currentPage.button_oneButton.locator).click();
+
+    // Check if the display shows the correct value
+    cy.get(currentPage.button_clearButton.locator).should("have.value", "CE");
   });
 });

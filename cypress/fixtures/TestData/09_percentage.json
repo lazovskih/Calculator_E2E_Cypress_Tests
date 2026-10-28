@@ -1,0 +1,41 @@
+{
+  "operation": "Special functions",
+  "data": [
+    {
+      "suboperation": "percentage",
+      "dataValues": "with positive and negative integer values",
+      "testCases": [
+        {
+          "args": ["2", "+", "10", "%", "="],
+          "result": "2.2"
+        },
+        {
+          "args": ["-100", "+", "25", "%", "="],
+          "result": "-125"
+        }
+      ]
+    },
+    {
+      "suboperation": "percentage",
+      "dataValues": "with positive and negative decimal values",
+      "testCases": [
+        {
+          "args": [".5", "+", "25.5", "%", "="],
+          "result": "0.6275"
+        },
+        {
+          "args": [".5", "-", "25.5", "%", "="],
+          "result": "0.3725"
+        },
+        {
+          "args": ["-2.5", "+", "50.5", "%", "="],
+          "result": "-3.7625"
+        },
+        {
+          "args": ["2.2", "+", "0.0005", "%", "="],
+          "result": "2.200011"
+        }
+      ]
+    }
+  ]
+}

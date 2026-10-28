@@ -1,0 +1,89 @@
+{
+  "operation": "Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "multiplication",
+      "dataValues": "with positive integer & decimal values",
+      "testCases": [
+        {
+          "args": ["111111", "×", "100000", "="],
+          "result": "11,111,100,000"
+        },
+        {
+          "args": ["10", "×", "11", "="],
+          "result": "110"
+        },
+        {
+          "args": ["1234567890", "×", "1234567890", "="],
+          "result": "1,524,157,875,019,052,000"
+        },
+        {
+          "args": ["1.2", "×", "2.3", "="],
+          "result": "2.76"
+        },
+        {
+          "args": ["0.02", "×", "0.02", "="],
+          "result": "0.0004"
+        },
+        {
+          "args": ["10", "×", "0.01", "="],
+          "result": "0.1"
+        }
+      ]
+    },
+    {
+      "suboperation": "multiplication",
+      "dataValues": "with negative integer & decimal values",
+      "testCases": [
+        {
+          "args": ["1", "×", "-1", "="],
+          "result": "-1"
+        },
+        {
+          "args": ["-10", "×", "-10", "="],
+          "result": "100"
+        },
+        {
+          "args": ["-1.2", "×", "-2.3", "="],
+          "result": "2.76"
+        },
+        {
+          "args": ["-0.02", "×", "0.02", "="],
+          "result": "-0.0004"
+        },
+        {
+          "args": ["10", "×", "-0.01", "="],
+          "result": "-0.1"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative multiplication",
+      "dataValues": "with positive integer & decimal values",
+      "testCases": [
+        {
+          "args": ["110", "×", "120", "×", "130", "×", "140", "×", "150", "="],
+          "result": "36,036,000,000"
+        },
+        {
+          "args": ["2.1", "×", "2.2", "×", "2.3", "×", "2.4", "="],
+          "result": "25.5024"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative multiplication",
+      "dataValues": "with negative integer & decimal values",
+      "testCases": [
+        {
+          "args": ["11", "×", "-22", "×", "33", "×", "44", "×", "55", "="],
+          "result": "-19,326,120"
+        },
+        {
+          "args": ["-2.01", "×", "2.02", "×", "2.03", "×", "-2.04", "="],
+          "result": "16.81410024"
+        }
+      ]
+    }
+  ]
+}

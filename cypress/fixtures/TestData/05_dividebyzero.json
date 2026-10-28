@@ -1,0 +1,25 @@
+{
+  "operation": "Simple mathematical functions",
+  "data": [
+    {
+      "suboperation": "division by zero",
+      "dataValues": "with zero as divisor",
+      "testCases": [
+        {
+          "args": ["256", "÷", "0", "="],
+          "result": "Div by 0"
+        }
+      ]
+    },
+    {
+      "suboperation": "cumulative operations with invalid divide",
+      "dataValues": "with 'zero' as devizor",
+      "testCases": [
+        {
+          "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0", "="],
+          "result": "Div by 0"
+        }
+      ]
+    }
+  ]
+}
