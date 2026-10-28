@@ -9,9 +9,10 @@ An end-to-end (E2E) testing suite for a prototype of the online calculator publi
 Calculator application files (`index.html`, `app.js`, `style.css`) are stored and executed locally to avoid redundant network calls, eliminate external dependencies, and accurately mimic the actual deployment.
 
 Please note that the calculator logic is provided "as is" for demonstration and testing purposes, and its mathematical accuracy is not guaranteed.
-This suite contains **119 automated tests** validating the user interface, basic mathematical operations, negative numbers, decimals, cumulative operations, special functions (square, square root, percentage, rounding, memory), and edge cases (e.g., division by zero).
 
-🎬 **Watch the execution recording here:** [YouTube Demo](https://youtu.be/sg8KL5Mb-V4)
+This suite contains **118 automated tests** validating the user interface, basic mathematical operations, negative numbers, decimals, cumulative operations, special functions (square, square root, percentage, rounding, memory), and edge cases (e.g., division by zero).
+
+🎬 **Watch the execution recording here:** [YouTube Demo: https://youtu.be/bnQtMrYxUKE](https://youtu.be/bnQtMrYxUKE)
 
 ---
 
