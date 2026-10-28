@@ -1,4 +1,4 @@
-import { calculatorPage } from "../PageObjects/calculatorPage.js";
+import { calculatorPage } from "../PageObjects/CalculatorPage.js";
 import { testDataSets } from "../fixtures/testData.js";
 const currentPage = new calculatorPage();
 
