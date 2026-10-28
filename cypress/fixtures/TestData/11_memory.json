@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "memory",
-      "dataValues": "adding positive and negative",
+      "dataValues": "adding positive and negative values",
       "testCases": [
         {
           "args": ["2", "+", "00.1", "%", "=", "M+", "2", "+", "00.1", "%", "=", "M+", "MR"],
@@ -17,7 +17,7 @@
     },
     {
       "suboperation": "memory",
-      "dataValues": "subtracting positive and negative",
+      "dataValues": "subtracting positive and negative values",
       "testCases": [
         {
           "args": ["2", "+", "00.1", "%", "=", "M-", "CE", "2", "+", "00.1", "%", "=", "M-", "MR"],
@@ -31,7 +31,7 @@
     },
     {
       "suboperation": "memory",
-      "dataValues": "adding and subtracting mixed",
+      "dataValues": "adding and subtracting mixed values",
       "testCases": [
         {
           "args": ["4", "+", "1", "%", "=", "M+", "CE", "2", "+", "1", "%", "=", "M-", "MR"],
@@ -45,7 +45,7 @@
     },
     {
       "suboperation": "memory",
-      "dataValues": "clear memory",
+      "dataValues": "clearing memory",
       "testCases": [
         {
           "args": ["2", "+", "00.1", "%", "=", "M-", "CE", "2", "+", "00.1", "%", "=", "MC", "MR"],

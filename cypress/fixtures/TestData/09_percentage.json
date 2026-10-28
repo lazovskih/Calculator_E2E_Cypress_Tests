@@ -3,7 +3,7 @@
   "data": [
     {
       "suboperation": "percentage",
-      "dataValues": "with positive and negative integer",
+      "dataValues": "with positive and negative integer values",
       "testCases": [
         {
           "args": ["2", "+", "10", "%", "="],
@@ -17,7 +17,7 @@
     },
     {
       "suboperation": "percentage",
-      "dataValues": "with positive and negative decimal",
+      "dataValues": "with positive and negative decimal values",
       "testCases": [
         {
           "args": [".5", "+", "25.5", "%", "="],

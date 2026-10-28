@@ -12,8 +12,8 @@
       ]
     },
     {
-      "suboperation": "cumulative division by zero",
-      "dataValues": "with zero as divisor",
+      "suboperation": "cumulative operations with invalid divide",
+      "dataValues": "with 'zero' as devizor",
       "testCases": [
         {
           "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0", "="],

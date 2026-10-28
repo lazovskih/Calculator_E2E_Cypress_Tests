@@ -17,7 +17,7 @@
     },
     {
       "suboperation": "rounding",
-      "dataValues": "to nearest integer",
+      "dataValues": "to nearest integer values",
       "testCases": [
         {
           "args": ["2", "+", "00.1", "%", "=", "R0"],

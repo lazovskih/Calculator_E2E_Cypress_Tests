@@ -12,9 +12,9 @@ beforeEach(() => {
 testDataSets.forEach((set, setIndex) => {
   context(`2.${setIndex + 1}. ${set.operation}`, () => {
     set.data.forEach((group, groupIndex) => {
-      describe(`2.${setIndex + 1}.${groupIndex + 1} Verify "${group.suboperation}" operation ${group.dataValues} values.`, () => {
+      describe(`2.${setIndex + 1}.${groupIndex + 1} Verify "${group.suboperation}" operation ${group.dataValues}.`, () => {
         group.testCases.forEach((testCase, testIndex) => {
-          it(`2.${setIndex + 1}.${groupIndex + 1}.${testIndex + 1} Validate results of "${group.suboperation}" ${group.dataValues} values.`, () => {
+          it(`2.${setIndex + 1}.${groupIndex + 1}.${testIndex + 1} Validate results of "${group.suboperation}" ${group.dataValues}.`, () => {
             // Click sequence of buttons for this test case
             for (const arg of testCase.args) {
               currentPage.clickButtons(arg);
