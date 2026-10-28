@@ -1,7 +1,7 @@
 import { CalculatorPage } from "../PageObjects/CalculatorPage.js";
 import TestSet_01 from "../fixtures/TestData/01_addition.json";
-import TestSet_02 from "../fixtures/TestData/02_subtraction.json";
-import TestSet_03 from "../fixtures/TestData/03_multiplication.json";
+import TestSet_02 from "../fixtures/TestData/02_subtract.json";
+import TestSet_03 from "../fixtures/TestData/03_multiply.json";
 import TestSet_04 from "../fixtures/TestData/04_division.json";
 import TestSet_05 from "../fixtures/TestData/05_divide0.json";
 import TestSet_06 from "../fixtures/TestData/06_cumulative.json";
@@ -13,31 +13,35 @@ import TestSet_11 from "../fixtures/TestData/11_memory.json";
 
 const currentPage = new CalculatorPage();
 
+const testDataSets = [
+  TestSet_01,
+  TestSet_02,
+  TestSet_03,
+  TestSet_04,
+  TestSet_05,
+  TestSet_06,
+  TestSet_07,
+  TestSet_08,
+  TestSet_09,
+  TestSet_10,
+  TestSet_11,
+];
+
 beforeEach(() => {
   cy.env(["baseUrl"]).then(({ baseUrl }) => {
     cy.visit(baseUrl);
   });
 });
-// Iterate through all sets in TestData
-for (let i = 0; i < 10; i++) {
-  const operation = TestData[i].operation;
 
-  context(operation, () => {
-    for (let j = 0; j < TestData.length; j++) {
-      const operation = TestData[j].suboperation;
-      const dataValues = TestData[j].dataValues;
-
-      describe(`2.${j + 1} Verify "${operation}" operation ${dataValues} values.`, () => {
-        // Iterate through all test cases in the test set
-        const testCases = TestData[j].testCases;
-
-        for (let test = 0; test < testCases.length; test++) {
-          // Get the args from the test set
-          const args = testCases[test].args;
-          const expectedResult = testCases[test].result;
-          it.only(`2.${n + 1}.${test + 1} Validate correct results of "${operation}" ${dataValues} values.`, () => {
-            // Iterate through all args in set
-            for (let arg of args) {
+// Iterate through each test file dataset
+testDataSets.forEach((set, setIndex) => {
+  context(`2.${setIndex + 1}. ${set.operation}`, () => {
+    set.data.forEach((group, groupIndex) => {
+      describe(`2.${setIndex + 1}.${groupIndex + 1} Verify "${group.suboperation}" operation ${group.dataValues} values.`, () => {
+        group.testCases.forEach((testCase, testIndex) => {
+          it(`2.${setIndex + 1}.${groupIndex + 1}.${testIndex + 1} Validate correct results of "${group.suboperation}" ${group.dataValues}.`, () => {
+            // Click sequence of buttons for this test case
+            for (const arg of testCase.args) {
               currentPage.clickButtons(arg);
             }
 
@@ -45,12 +49,11 @@ for (let i = 0; i < 10; i++) {
             cy.get(currentPage.display.locator)
               .invoke("val")
               .then((actualResult) => {
-                // Confirm actual result is equal to expected result
-                expect(expectedResult, "Confirmed actual result is equal to expected result").to.equal(actualResult);
+                expect(actualResult, "Confirmed actual result is equal to expected result").to.equal(testCase.result);
               });
           });
-        }
+        });
       });
-    }
+    });
   });
-}
+});

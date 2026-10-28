@@ -1,0 +1,33 @@
+{
+  "operation": "Special functions",
+  "data": [
+    {
+      "suboperation": "memory functions",
+      "dataValues": "subtract from memory negative and positive",
+      "testCases": [
+        {
+          "args": ["2", "+", "00.1", "%", "=", "M-", "CE", "2", "+", "00.1", "%", "=", "M-", "MR"],
+          "result": "-4.004"
+        },
+        {
+          "args": ["101.0001", "M-", "CE", "101.0001", "M-", "MR"],
+          "result": "-202.0002"
+        }
+      ]
+    },
+    {
+      "suboperation": "memory functions",
+      "dataValues": "add and subtract from memory negative and positive",
+      "testCases": [
+        {
+          "args": ["4", "+", "1", "%", "=", "M+", "CE", "2", "+", "1", "%", "=", "M-", "MR"],
+          "result": "2.02"
+        },
+        {
+          "args": ["101.0001", "M+", "CE", "202.0002", "M-", "MR"],
+          "result": "-101.0001"
+        }
+      ]
+    }
+  ]
+}

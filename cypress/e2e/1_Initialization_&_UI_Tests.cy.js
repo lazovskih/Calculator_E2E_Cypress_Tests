@@ -147,12 +147,25 @@ context("1. Initialization and UI Tests", () => {
     // Check if the display shows the correct value
     cy.get(currentPage.display.locator).should("have.value", "0");
   });
-    
-  it.only("1.9 Validate click on π button produces valid result.", () => {
+
+  it("1.9 Validate click on π button produces valid result.", () => {
     // Click π button
     cy.get(currentPage.button_piButton.locator).click();
 
     // Check if the display shows the correct value
     cy.get(currentPage.display.locator).should("have.value", "3.1415926536");
+  });
+
+  it("1.10 Validate button AC changes to CE after first button press.", () => {
+    cy.get(currentPage.button_clearButton.locator).click();
+
+    // Check if the display shows the correct value
+    cy.get(currentPage.button_clearButton.locator).should("have.value", "AC");
+
+    // Click π button
+    cy.get(currentPage.button_oneButton.locator).click();
+
+    // Check if the display shows the correct value
+    cy.get(currentPage.button_clearButton.locator).should("have.value", "CE");
   });
 });

@@ -1,5 +1,5 @@
 {
-  "operation": "09. Special functions",
+  "operation": "Special functions",
   "data": [
     {
       "suboperation": "percent",
@@ -25,15 +25,15 @@
         },
         {
           "args": [".5", "-", "25.5", "%", "="],
-          "result": "-0.005"
+          "result": "0.3725"
         },
         {
           "args": ["-2.5", "+", "50.5", "%", "="],
           "result": "-3.7625"
         },
         {
-          "args": ["2.2", "25.5", "%", "="],
-          "result": "0.022255"
+          "args": ["2.2", "+", "0.0005", "%", "="],
+          "result": "2.200011"
         }
       ]
     }

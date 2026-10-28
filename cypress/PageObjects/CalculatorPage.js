@@ -11,6 +11,10 @@ export class CalculatorPage {
   }
 
   buttons = [
+    "clearButton",
+    "CE",
+    "clearAllButton",
+    "AC",
     "zeroButton",
     "0",
     "oneButton",
@@ -36,15 +40,13 @@ export class CalculatorPage {
     "addButton",
     "+",
     "subtractButton",
-    "−",
+    "-",
     "multiplyButton",
     "×",
     "divideButton",
     "÷",
     "calculateButton",
     "=",
-    "clearButton",
-    "AC",
     "negateButton",
     "+/-",
     "squarerootButton",
@@ -67,8 +69,6 @@ export class CalculatorPage {
     "M+",
     "memoryMinusButton",
     "M-",
-    "clearButton",
-    "CE",
   ];
 
   display = {
@@ -81,10 +81,7 @@ export class CalculatorPage {
    * @returns {string} - The locator string for the button.
    */
   getButton(buttonValue) {
-    if (isNaN(Number(buttonValue))) {
-      // Handle negative button
-      buttonValue = buttonValue == "!" ? "+/-" : buttonValue;
-    }
+    buttonValue = buttonValue == "!" ? "+/-" : buttonValue;
     return Object.values(this).find((prop) => prop.value === buttonValue)?.locator;
   }
   /**
@@ -97,7 +94,7 @@ export class CalculatorPage {
     buttons = buttons.trim().replace(" ", "");
 
     const isNumber = Number(buttons.replaceAll(",", "").replace("!", ""));
-    const isSpecial = isNaN(isNumber); // && buttons.length === 2;
+    const isSpecial = isNaN(isNumber);
 
     if (buttons.includes("-") && !isNaN(isNumber)) {
       buttons = buttons.replace("-", "") + "!";
@@ -107,15 +104,14 @@ export class CalculatorPage {
       // Handle non-number buttons
       const locator = this.getButton(buttons);
       locators.push(locator);
-      console.log("------ Special: " + buttons + " | locator: " + locator); // TODO: remove
     }
 
     if (!isNaN(isNumber)) {
+      // Handle number buttons
       const buttonsArr = buttons.replaceAll(",", "").split("");
       for (const button of buttonsArr) {
         const locator = this.getButton(button);
         locators.push(locator);
-        console.log("------ Number " + button + " | locator: " + locator); // TODO: remove
       }
     }
 
