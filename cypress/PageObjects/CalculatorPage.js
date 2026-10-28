@@ -1,76 +1,15 @@
-export class CalculatorPage {
+import { buttons } from "./buttons";
+export class calculatorPage {
   constructor() {
     // Generate number buttons dynamically as object properties
-    for (let i = 0; i < this.buttons.length; i += 2) {
-      this[`button_${this.buttons[i]}`] = {
-        name: this.buttons[i],
-        locator: `input[name="${this.buttons[i]}"]`,
-        value: this.buttons[i + 1],
+    for (let i = 0; i < buttons.length; i += 2) {
+      this[`button_${buttons[i]}`] = {
+        name: buttons[i],
+        locator: `input[name="${buttons[i]}"]`,
+        value: buttons[i + 1],
       };
     }
   }
-
-  buttons = [
-    "clearButton",
-    "CE",
-    "clearAllButton",
-    "AC",
-    "zeroButton",
-    "0",
-    "oneButton",
-    "1",
-    "twoButton",
-    "2",
-    "threeButton",
-    "3",
-    "fourButton",
-    "4",
-    "fiveButton",
-    "5",
-    "sixButton",
-    "6",
-    "sevenButton",
-    "7",
-    "eightButton",
-    "8",
-    "nineButton",
-    "9",
-    "decimalButton",
-    ".",
-    "addButton",
-    "+",
-    "subtractButton",
-    "-",
-    "multiplyButton",
-    "×",
-    "divideButton",
-    "÷",
-    "calculateButton",
-    "=",
-    "negateButton",
-    "+/-",
-    "squarerootButton",
-    "√x",
-    "percentButton",
-    "%",
-    "piButton",
-    "π",
-    "squareButton",
-    "x²",
-    "round2Button",
-    "R2",
-    "round0Button",
-    "R0",
-    "memoryClearButton",
-    "MC",
-    "memoryRecallButton",
-    "MR",
-    "memoryPlusButton",
-    "M+",
-    "memoryMinusButton",
-    "M-",
-  ];
-
   display = {
     locator: "input[name='display']",
     value: " ",

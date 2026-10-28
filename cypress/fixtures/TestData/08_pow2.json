@@ -2,7 +2,7 @@
   "operation": "Special functions",
   "data": [
     {
-      "suboperation": "Power of 2",
+      "suboperation": "square (power of 2)",
       "dataValues": "with positive and negative integers",
       "testCases": [
         {
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "suboperation": "Power of 2",
+      "suboperation": "square (power of 2)",
       "dataValues": "with positive and negative decimals",
       "testCases": [
         {
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "suboperation": "Power of 2",
+      "suboperation": "square (power of 2)",
       "dataValues": "with large positive and negative integers",
       "testCases": [
         {
@@ -48,7 +48,7 @@
       ]
     },
     {
-      "suboperation": "Power of 2",
+      "suboperation": "square (power of 2)",
       "dataValues": "with large positive and negative decimals",
       "testCases": [
         {

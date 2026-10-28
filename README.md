@@ -4,7 +4,11 @@
 [![Cypress version](https://img.shields.io/badge/cypress-v15.16.0-brightgreen)](https://www.cypress.io/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-An end-to-end (E2E) testing suite for the online calculator at [theonlinecalculator.com](https://www.theonlinecalculator.com/). This suite contains **84 tests** validating the user interface, basic operations, negative numbers, decimals, cumulative operations, and edge cases (e.g., division by zero).
+An end-to-end (E2E) testing suite for a prototype of the online calculator published at [theonlinecalculator.com](https://www.theonlinecalculator.com/).
+
+Calculator application files (`index.html`, `app.js`, `style.css`) are stored and executed locally to avoid redundant network calls, eliminate external dependencies, and accurately mimic the actual deployment.
+
+This suite contains **119 automated tests** validating the user interface, basic mathematical operations, negative numbers, decimals, cumulative operations, special functions (square, square root, percentage, rounding, memory), and edge cases (e.g., division by zero).
 
 🎬 **Watch the execution recording here:** [YouTube Demo](https://youtu.be/sg8KL5Mb-V4)
 
@@ -19,6 +23,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed (Node 18+ or 20+ rec
 ### Installation
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/lazovskih/calculator-e2e-tests.git
    cd calculator-e2e-tests
@@ -36,6 +41,7 @@ Make sure you have [Node.js](https://nodejs.org/) installed (Node 18+ or 20+ rec
 ### Headless Mode (CLI)
 
 Run the entire test suite headlessly:
+
 ```bash
 # Run using the default browser
 npm test
@@ -50,6 +56,7 @@ npm run cy:run:firefox
 ### Interactive Mode (Cypress App)
 
 To open the Cypress Test Runner UI and run tests interactively:
+
 ```bash
 # Open interactive UI
 npm run cy:open
@@ -74,69 +81,97 @@ This project has **GitHub Actions** set up to automatically execute tests on cod
 
 ---
 
+## 📊 Data-Driven Testing
+
+The functional test suite is **purely data-driven**. All datasets are externalized into structured JSON files located in `cypress/fixtures/TestData/`.
+
+The test runner dynamically iterates through each fixture file and runs all defined test cases sequentially. The suite is easily extensible: adding more tests or edge cases only requires saving valid, structured data in the corresponding JSON file—no test script modifications needed.
+
+---
+
 ## 📂 Project Structure
 
 ```
 calculator-e2e-tests/
 ├── .github/
 │   └── workflows/
-│       └── cypress.yml                 # GitHub Actions workflow configuration
+│       └── cypress.yml                       # GitHub Actions CI/CD workflow configuration
 ├── cypress/
 │   ├── PageObjects/
-│   │   └── CalculatorPage.js           # Page Object for Calculator selectors and interactions
+│   │   └── CalculatorPage.js                 # Page Object for Calculator selectors and interactions
 │   ├── e2e/
-│   │   ├── 1_Initialization_&_UI_Tests.cy.js  # Initialization & Basic UI Spec
-│   │   └── 2_Functional_Tests.cy.js           # Comprehensive math operations Spec
-│   ├── fixtures/                       # Test fixture files
-│   ├── support/                        # Cypress support files (commands, e2e config)
-│   └── downloads/                      # Downloaded files
-├── cypress.config.js                   # Cypress configuration
-├── package.json                        # Node.js scripts and dependencies
-└── README.md                           # Project documentation
+│   │   ├── 1_Initialization_&_UI_Tests.cy.js # Initialization & UI Spec (10 tests)
+│   │   └── 2_Functional_Tests.cy.js          # Data-driven functional tests (108 tests)
+│   ├── fixtures/                             # Test fixture files
+│   │   ├── 01_addition.json                  # Test data for addition
+│   │   ├── 02_subtraction.json               # Test data for subtraction
+│   │   ├── 03_multiplication.json            # Test data for multiplication
+│   │   ├── 04_division.json                  # Test data for division
+│   │   ├── 05_divisionbyzero.json            # Test data for division by zero
+│   │   ├── 06_cumulative.json                # Test data for cumulative operations
+│   │   ├── 07_squareroot.json                # Test data for square root
+│   │   ├── 08_pow2.json                      # Test data for power of 2
+│   │   ├── 09_percentage.json                # Test data for percentage
+│   │   ├── 10_rounding.json                  # Test data for rounding
+│   │   └── 11_memory.json                    # Test data for memory functions
+│   └── support/
+│       ├── commands.js                       # Custom Cypress commands
+│       └── e2e.js                            # Cypress support configuration
+├── app.js                                    # Calculator application logic
+├── cypress.config.js                         # Cypress configuration
+├── index.html                                # Calculator HTML markup
+├── style.css                                 # Calculator styling
+├── package.json                              # Dependencies and test scripts
+└── README.md                                 # Project documentation
 ```
 
 ---
 
 ## 📋 Test Coverage Details
 
-The suite consists of **84 tests** split into two main spec files:
+The suite consists of **118 tests** split into two main spec files:
 
 <details>
-<summary><b>1. Initialization & UI Tests (8 tests)</b></summary>
+<summary><b>1. Initialization & UI Tests (10 tests)</b></summary>
 
-* **1.1** Validate the default state of the calculator upon load.
-* **1.2** Validate that pressing numbers buttons updates the display as expected.
-* **1.3** Validate the calculator prevents entering more than one decimal point.
-* **1.4** Validate how the calculator handles leading zeros.
-* **1.5** Validate that pressing "CE" button clears only current entry.
-* **1.6** Validate that a number can be set as negative and set back to positive.
-* **1.7** Validate typing on the display with 'Equals' and 'Enter' buttons produce valid results.
-* **1.8** Validate typing after 'Equals' and 'Enter' buttons produce valid results.
+- **1.1** Validate the default state of the calculator upon load.
+- **1.2** Validate that pressing numbers buttons updates the display as expected.
+- **1.3** Validate the calculator prevents entering more than one decimal point.
+- **1.4** Validate how the calculator handles leading zeros.
+- **1.5** Validate that pressing "CE" button clears only current entry.
+- **1.6** Validate that a number can be set as negative and set back to positive.
+- **1.7** Validate typing on the display with 'Equals' and 'Enter' buttons produce valid results.
+- **1.8** Validate typing after 'Equals' and 'Enter' buttons produce valid results.
+- **1.9** Validate click on π button produces valid result.
+- **1.10** Validate button AC changes to CE after first button press.
 </details>
 
 <details>
-<summary><b>2. Functional Tests (76 tests)</b></summary>
+<summary><b>2. Functional Tests (109 tests)</b></summary>
 
-* **2.1** Verify "add (sum)" operation with positive integers & decimal values.
-* **2.2** Verify "add (sum)" operation with negative integers & decimal values.
-* **2.3** Verify "cumulative add (sum)" operation with positive integers & decimal values.
-* **2.4** Verify "cumulative add (sum)" operation with negative integers & decimal values.
-* **2.5** Verify "subtract" operation with positive integers & decimal values.
-* **2.6** Verify "subtract" operation with negative integers & decimal values.
-* **2.7** Verify "cumulative subtract" operation with positive integers & decimal values.
-* **2.8** Verify "cumulative subtract" operation with negative integers & decimal values.
-* **2.9** Verify "multiply" operation with positive integers & decimal values.
-* **2.10** Verify "multiply" operation with negative integers & decimal values.
-* **2.11** Verify "cumulative multiply" operation with positive integers & decimal values.
-* **2.12** Verify "cumulative multiply" operation with negative integers & decimal values.
-* **2.13** Verify "divide" operation with positive integers & decimal values.
-* **2.14** Verify "divide" operation with negative integers & decimal values.
-* **2.15** Verify "cumulative divide" operation with positive integers & decimal values.
-* **2.16** Verify "cumulative divide" operation with negative integers & decimal values.
-* **2.17** Verify "invalid divide" operation with 'zero' as devizor values.
-* **2.18** Verify "cumulative operations with invalid divide" operation with 'zero' as devizor values.
-* **2.19** Verify "Multiple cumulative operations" operation with positive & negative integers & decimal values.
-* **2.20** Verify "Multiple cumulative with equal operation" operation with positive & negative integers & decimal values.
-* **2.21** Verify "Multiple operation result to last operand" operation with positive integers values.
-* **2.22** Verify "Multiple operations" operation with not complete arguments values.
+- **2.1 Addition:** Validates addition and cumulative addition with positive and negative integers and decimals.
+- **2.2 Subtraction:** Validates subtraction and cumulative subtraction with positive and negative integers and decimals.
+- **2.3 Multiplication:** Validates multiplication and cumulative multiplication with positive and negative integers and decimals.
+- **2.4 Division:** Validates division and cumulative division with positive and negative integers and decimals.
+- **2.5 Division by Zero:** Validates error handling (`Div by 0`) for standalone and cumulative division by zero.
+- **2.6 Cumulative & Chained Operations:** Validates multi-operator chained calculations, intermediate equals (`=`), consecutive operator overrides, and incomplete arguments.
+- **2.7 Square Root:** Validates square root calculation for positive decimals and error handling (`Invalid input`) for negative values.
+- **2.8 Power of 2 (Square):** Validates squaring (`x²`) on positive/negative integers, decimals, and large numbers.
+- **2.9 Percentage:** Validates percentage calculations combined with addition and subtraction across integers and decimals.
+- **2.10 Rounding:** Validates display rounding to 2 decimal places (`R2`) and rounding to the nearest integer (`R0`).
+- **2.11 Memory Functions:** Validates memory operations (`M+`, `M-`, `MR`, `MC`) with positive and negative values.
 </details>
+
+---
+
+## 🌐 Target Application
+
+- **Original:** [theonlinecalculator.com](https://www.theonlinecalculator.com/)
+- **Local Implementation:** Prototype hosted locally (`index.html`, `app.js`, `style.css`) to ensure deterministic and fast execution
+- **Purpose:** QA automation practice with Cypress E2E
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).

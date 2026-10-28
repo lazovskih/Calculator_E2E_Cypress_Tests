@@ -2,8 +2,8 @@
   "operation": "Simple mathematical functions",
   "data": [
     {
-      "suboperation": "divide",
-      "dataValues": "with positive integers & decimal",
+      "suboperation": "division",
+      "dataValues": "with positive integers & decimals",
       "testCases": [
         {
           "args": ["256", "÷", "32", "="],
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "suboperation": "divide",
+      "suboperation": "division",
       "dataValues": "with negative integers & decimal",
       "testCases": [
         {
@@ -62,8 +62,8 @@
       ]
     },
     {
-      "suboperation": "cumulative divide",
-      "dataValues": "with positive integers & decimal",
+      "suboperation": "cumulative division",
+      "dataValues": "with positive integers & decimals",
       "testCases": [
         {
           "args": ["11", "÷", "22", "÷", "33", "÷", "44", "÷", "55", "="],
@@ -76,7 +76,7 @@
       ]
     },
     {
-      "suboperation": "cumulative divide",
+      "suboperation": "cumulative division",
       "dataValues": "with negative integers & decimal",
       "testCases": [
         {

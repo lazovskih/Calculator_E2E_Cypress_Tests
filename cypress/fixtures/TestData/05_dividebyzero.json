@@ -2,8 +2,8 @@
   "operation": "Simple mathematical functions",
   "data": [
     {
-      "suboperation": "invalid divide",
-      "dataValues": "with 'zero' as devidor",
+      "suboperation": "division by zero",
+      "dataValues": "with zero as divisor",
       "testCases": [
         {
           "args": ["256", "÷", "0", "="],
@@ -12,8 +12,8 @@
       ]
     },
     {
-      "suboperation": "cumulative operations with invalid divide",
-      "dataValues": "with 'zero' as devidor",
+      "suboperation": "cumulative division by zero",
+      "dataValues": "with zero as divisor",
       "testCases": [
         {
           "args": ["-2.01", "×", "2.02", "+", "2.03", "÷", "0", "="],

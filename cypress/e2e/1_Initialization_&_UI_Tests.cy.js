@@ -1,9 +1,12 @@
-import { CalculatorPage } from "../PageObjects/CalculatorPage.js";
-const currentPage = new CalculatorPage();
+import { calculatorPage } from "../PageObjects/calculatorPage.js";
+const currentPage = new calculatorPage();
 
 beforeEach(() => {
   cy.env(["baseUrl"]).then(({ baseUrl }) => {
     cy.visit(baseUrl);
+
+    // Set initial state for "AC" button, which is also "clearButton"
+    currentPage.button_clearButton.value = "AC";
   });
 });
 
@@ -12,6 +15,7 @@ context("1. Initialization and UI Tests", () => {
     for (const key in currentPage) {
       if (currentPage.hasOwnProperty(key) && currentPage[key].locator) {
         cy.log(`Verified element is present: |${key}|`);
+
         // first() is used to select 0 button that has same locator as R2
         cy.get(currentPage[key].locator).first().should("be.visible").and("have.value", currentPage[key].value);
       }
@@ -93,6 +97,7 @@ context("1. Initialization and UI Tests", () => {
       cy.get(buttonLocator).first().click();
     }
     cy.get(currentPage.button_calculateButton.locator).first().click();
+
     // Check if the display shows the correct value
     cy.get(currentPage.display.locator).should("have.value", "1,000");
   });
@@ -160,7 +165,7 @@ context("1. Initialization and UI Tests", () => {
     cy.get(currentPage.button_clearButton.locator).click();
 
     // Check if the display shows the correct value
-    cy.get(currentPage.button_clearButton.locator).should("have.value", "AC");
+    cy.get(currentPage.button_clearButton.locator).should("have.value", currentPage.button_clearButton.value);
 
     // Click π button
     cy.get(currentPage.button_oneButton.locator).click();

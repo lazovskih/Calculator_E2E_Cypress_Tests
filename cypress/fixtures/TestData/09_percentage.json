@@ -2,7 +2,7 @@
   "operation": "Special functions",
   "data": [
     {
-      "suboperation": "percent",
+      "suboperation": "percentage",
       "dataValues": "with positive and negative integers",
       "testCases": [
         {
@@ -16,7 +16,7 @@
       ]
     },
     {
-      "suboperation": "percent",
+      "suboperation": "percentage",
       "dataValues": "with positive and negative decimals",
       "testCases": [
         {

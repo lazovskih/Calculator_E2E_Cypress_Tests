@@ -2,8 +2,8 @@
   "operation": "Simple mathematical functions",
   "data": [
     {
-      "suboperation": "subtract",
-      "dataValues": "with positive integers & decimal",
+      "suboperation": "subtraction",
+      "dataValues": "with positive integers & decimals",
       "testCases": [
         {
           "args": ["111111", "-", "100000", "="],
@@ -32,7 +32,7 @@
       ]
     },
     {
-      "suboperation": "subtract",
+      "suboperation": "subtraction",
       "dataValues": "with negative integers & decimal",
       "testCases": [
         {
@@ -58,8 +58,8 @@
       ]
     },
     {
-      "suboperation": "cumulative subtract",
-      "dataValues": "with positive integers & decimal",
+      "suboperation": "cumulative subtraction",
+      "dataValues": "with positive integers & decimals",
       "testCases": [
         {
           "args": ["110", "-", "120", "-", "130", "-", "140", "-", "150", "="],
@@ -72,7 +72,7 @@
       ]
     },
     {
-      "suboperation": "cumulative subtract",
+      "suboperation": "cumulative subtraction",
       "dataValues": "with negative integers & decimal",
       "testCases": [
         {
